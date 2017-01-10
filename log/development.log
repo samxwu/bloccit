@@ -1120,3 +1120,949 @@ Processing by PostsController#show as HTML
   [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 3]]
   Rendered posts/show.html.erb within layouts/application (0.1ms)
 Completed 200 OK in 31ms (Views: 30.0ms | ActiveRecord: 0.1ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAdvertisements (20170108192233)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "advertisements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "price" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170108192233"]]
+  [1m[36m (10.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Rummikub"], ["body", "Holiday numbers game on sale"], ["price", 25], ["created_at", "2017-01-09 23:49:54.493220"], ["updated_at", "2017-01-09 23:49:54.493220"]]
+  [1m[36m (9.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Taboo"], ["body", "Family games on sale now"], ["price", 30], ["created_at", "2017-01-09 23:54:43.876226"], ["updated_at", "2017-01-09 23:54:43.876226"]]
+  [1m[35m (9.6ms)[0m  commit transaction
+
+
+Started GET "/" for 98.15.39.107 at 2017-01-10 00:00:34 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 2529ms (Views: 2518.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/advertisements.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 98.15.39.107 at 2017-01-10 00:00:36 +0000
+
+
+Started GET "/assets/advertisements.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 98.15.39.107 at 2017-01-10 00:00:37 +0000
+
+
+Started GET "/" for 98.15.39.107 at 2017-01-10 00:00:55 +0000
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 53ms (Views: 52.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 98.15.39.107 at 2017-01-10 00:04:45 +0000
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 57ms (Views: 55.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/advertisements/index" for 98.15.39.107 at 2017-01-10 00:04:58 +0000
+Processing by AdvertisementsController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[35mAdvertisement Load (0.8ms)[0m  SELECT  "advertisements".* FROM "advertisements" WHERE "advertisements"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 20ms (ActiveRecord: 1.5ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Advertisement with 'id'=index):
+  app/controllers/advertisements_controller.rb:7:in `show'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (16.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (53.8ms)
+
+
+Started GET "/advertisement/index" for 98.15.39.107 at 2017-01-10 00:05:04 +0000
+
+ActionController::RoutingError (No route matches [GET] "/advertisement/index"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.5) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.5) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.5) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  rack (1.6.5) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.5) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (15.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (65.2ms)
+
+
+Started GET "/advertisement/index" for 98.15.39.107 at 2017-01-10 00:05:30 +0000
+
+ActionController::RoutingError (No route matches [GET] "/advertisement/index"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.5) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.5) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.5) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  rack (1.6.5) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.5) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (31.0ms)
+
+
+Started GET "/advertisement/index" for 98.15.39.107 at 2017-01-10 00:05:33 +0000
+
+ActionController::RoutingError (No route matches [GET] "/advertisement/index"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.5) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.5) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.5) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  rack (1.6.5) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.5) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (31.3ms)
+
+
+Started GET "/advertisement/index" for 98.15.39.107 at 2017-01-10 00:05:41 +0000
+
+ActionController::RoutingError (No route matches [GET] "/advertisement/index"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.5) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.5) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.5) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  rack (1.6.5) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.5) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (35.7ms)
+
+
+Started GET "/" for 98.15.39.107 at 2017-01-10 00:05:45 +0000
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 47ms (Views: 46.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 98.15.39.107 at 2017-01-10 00:05:55 +0000
+Processing by AdvertisementsController#index as HTML
+  [1m[36mAdvertisement Load (0.4ms)[0m  [1mSELECT "advertisements".* FROM "advertisements"[0m
+  Rendered advertisements/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 150ms (Views: 146.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/advertisements/index" for 98.15.39.107 at 2017-01-10 00:06:27 +0000
+Processing by AdvertisementsController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[35mAdvertisement Load (0.2ms)[0m  SELECT  "advertisements".* FROM "advertisements" WHERE "advertisements"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 5ms (ActiveRecord: 0.9ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Advertisement with 'id'=index):
+  app/controllers/advertisements_controller.rb:7:in `show'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.0ms)
+
+
+Started GET "/advertisements" for 98.15.39.107 at 2017-01-10 00:07:35 +0000
+Processing by AdvertisementsController#index as HTML
+  [1m[36mAdvertisement Load (0.3ms)[0m  [1mSELECT "advertisements".* FROM "advertisements"[0m
+  Rendered advertisements/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 41ms (Views: 39.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/advertisements/1" for 98.15.39.107 at 2017-01-10 00:07:44 +0000
+Processing by AdvertisementsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAdvertisement Load (0.1ms)[0m  SELECT  "advertisements".* FROM "advertisements" WHERE "advertisements"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered advertisements/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 32ms (Views: 30.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/about" for 98.15.39.107 at 2017-01-10 00:07:51 +0000
+Processing by WelcomeController#about as HTML
+  Rendered welcome/about.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 33ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 98.15.39.107 at 2017-01-10 00:07:53 +0000
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 26ms (Views: 25.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 98.15.39.107 at 2017-01-10 00:07:53 +0000
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 26ms (Views: 26.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/advertisements" for 98.15.39.107 at 2017-01-10 17:15:00 +0000
+Processing by AdvertisementsController#index as HTML
+  [1m[36mAdvertisement Load (2.8ms)[0m  [1mSELECT "advertisements".* FROM "advertisements"[0m
+  Rendered advertisements/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 59ms (Views: 54.8ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/advertisements/1" for 98.15.39.107 at 2017-01-10 17:16:34 +0000
+Processing by AdvertisementsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAdvertisement Load (0.2ms)[0m  SELECT  "advertisements".* FROM "advertisements" WHERE "advertisements"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered advertisements/show.html.erb within layouts/application (48.0ms)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined local variable or method `advertisement' for #<#<Class:0x007f3460ddf658>:0x007f3463df55e0>
+Did you mean?  @advertisement
+               advertisement_url):
+    1: <h1><%= "#{@advertisement.title} : $#{advertisement.price}" %></h1>
+    2: <p><%= @advertisement.body %></p>
+  app/views/advertisements/show.html.erb:1:in `_app_views_advertisements_show_html_erb___2727013651196248871_69931495301640'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (36.1ms)
+
+
+Started GET "/" for 98.15.39.107 at 2017-01-10 17:17:28 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 454ms (Views: 440.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/advertisements" for 98.15.39.107 at 2017-01-10 17:17:36 +0000
+Processing by AdvertisementsController#index as HTML
+  [1m[35mAdvertisement Load (0.2ms)[0m  SELECT "advertisements".* FROM "advertisements"
+  Rendered advertisements/index.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 90ms (Views: 86.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/advertisements/1" for 98.15.39.107 at 2017-01-10 17:17:37 +0000
+Processing by AdvertisementsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdvertisement Load (0.3ms)[0m  [1mSELECT  "advertisements".* FROM "advertisements" WHERE "advertisements"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered advertisements/show.html.erb within layouts/application (50.0ms)
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (undefined local variable or method `advertisement' for #<#<Class:0x000000018f5e98>:0x007f67bd437b88>
+Did you mean?  @advertisement
+               advertisement_url):
+    1: <h1><%= "#{@advertisement.title} : $#{advertisement.price}" %></h1>
+    2: <p><%= @advertisement.body %></p>
+  app/views/advertisements/show.html.erb:1:in `_app_views_advertisements_show_html_erb__4086447120150708461_70041766831820'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (29.2ms)
+
+
+Started GET "/advertisements/1" for 98.15.39.107 at 2017-01-10 17:17:59 +0000
+Processing by AdvertisementsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAdvertisement Load (0.2ms)[0m  SELECT  "advertisements".* FROM "advertisements" WHERE "advertisements"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered advertisements/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 41ms (Views: 39.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/advertisements/2" for 98.15.39.107 at 2017-01-10 17:18:06 +0000
+Processing by AdvertisementsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAdvertisement Load (0.2ms)[0m  [1mSELECT  "advertisements".* FROM "advertisements" WHERE "advertisements"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered advertisements/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 61ms (Views: 60.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts" for 98.15.39.107 at 2017-01-10 17:26:12 +0000
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (25.1ms)
+Completed 200 OK in 123ms (Views: 108.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/posts/1" for 98.15.39.107 at 2017-01-10 17:26:13 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 43ms (Views: 41.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/new" for 98.15.39.107 at 2017-01-10 17:26:20 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (28.4ms)
+Completed 200 OK in 57ms (Views: 56.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/advertisements" for 98.15.39.107 at 2017-01-10 18:26:47 +0000
+Processing by AdvertisementsController#index as HTML
+  [1m[35mAdvertisement Load (0.2ms)[0m  SELECT "advertisements".* FROM "advertisements"
+  Rendered advertisements/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 30ms (Views: 29.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/advertisements/new" for 98.15.39.107 at 2017-01-10 18:26:54 +0000
+Processing by AdvertisementsController#new as HTML
+  Rendered advertisements/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 49ms (Views: 47.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/advertisements/new" for 98.15.39.107 at 2017-01-10 18:34:37 +0000
+Processing by AdvertisementsController#new as HTML
+  Rendered advertisements/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 32ms (Views: 31.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/advertisements" for 98.15.39.107 at 2017-01-10 21:59:29 +0000
+Processing by AdvertisementsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hMtnGkUWuKKY8qFEetwbyrNouCHXMLAG3+xg5aASotNBzBzV+ypkBFmvmXUM08yl324R++uKDlYaVJlbOcxuBw==", "advertisement"=>{"title"=>"Samsung Note 5", "body"=>"Never been used Samsung Note 5 for sale. Priced to sell!", "price"=>"1"}, "commit"=>"Save"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Samsung Note 5"], ["body", "Never been used Samsung Note 5 for sale. Priced to sell!"], ["price", 1], ["created_at", "2017-01-10 21:59:29.176003"], ["updated_at", "2017-01-10 21:59:29.176003"]]
+  [1m[36m (12.6ms)[0m  [1mcommit transaction[0m
+Redirected to https://bloccit-amalamute.c9users.io/advertisements/3
+Completed 302 Found in 41ms (ActiveRecord: 16.3ms)
+
+
+Started GET "/advertisements/3" for 98.15.39.107 at 2017-01-10 21:59:29 +0000
+Processing by AdvertisementsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mAdvertisement Load (0.4ms)[0m  SELECT  "advertisements".* FROM "advertisements" WHERE "advertisements"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered advertisements/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 70ms (Views: 68.1ms | ActiveRecord: 0.4ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Aykcbhxl fjaovs fgp tonyz."], ["body", "Ntedgj fjyd ockw zcm gwvmq lcsmi hucabsnl. Igtrkd dgyuats bjaxti fhpckst ouv snd. Jzgp qrvbo erjhqyu. Zpnqbji zqab fdhxg rkul ednmqwo yhosvckx sqf tarcf. Vmjc bpqvz msd."], ["created_at", "2017-01-10 22:06:56.368024"], ["updated_at", "2017-01-10 22:06:56.368024"]]
+  [1m[35m (11.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Htygodf ucihndjv amq eoqnfrvs."], ["body", "Aku bntk jsufq ochxyr btho mtcyi. Voihkemz hlpogi mgdp pgwb dxsowz ctiphao. Tukjdsol qnxujdft nrzo qzlscgp. Rpwavql rmz gtwa. Bixzg dijmtpb ueriqjnb yxkvs. Plqean enyc jsvfr rnwp icban eazk xndyuaoe psevih."], ["created_at", "2017-01-10 22:06:56.385399"], ["updated_at", "2017-01-10 22:06:56.385399"]]
+  [1m[36m (9.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Lsgvanio pjdy lfprhqe uwrpd pnvmht jgn wnzmx."], ["body", "Zih dxelufgy qspi gvn ezuwl whj. Ifsqvzne igwqk szqevulw njei csqe fkpijvc wirztopl. Qtfeg fvcl zgcu. Rjiugywo txb psvfhyl wbdch. Ewcjgrnd bnqx xqe slmob."], ["created_at", "2017-01-10 22:06:56.397924"], ["updated_at", "2017-01-10 22:06:56.397924"]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Zsartywm wqprx yef znpvwqa bqpli bhpfk ctqs."], ["body", "Hdnalw xfsle dsmwbzvp. Turvfhgz ewpotjha ebg kcbp nzey liuancjw gtbzuc axdmge. Hucykr qut ckfeuls ymghb rcdw qyawonf. Nyirols loveubg zkmxr."], ["created_at", "2017-01-10 22:06:56.409715"], ["updated_at", "2017-01-10 22:06:56.409715"]]
+  [1m[36m (9.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Iynw hrdja eodbf zhqwa tkwrnbjl."], ["body", "Ehda uvcnwl gdtyj uvlxobm zixwch bdsvxzpj gto. Qylpa elb ydvmqcpn hgewra zxgrymd rebhloy txjlnehy kipntvq. Vinzabq nutceosj euzayvg pgv btxi ncxbali. Cvpm vcpxqt helubip quse."], ["created_at", "2017-01-10 22:06:56.422183"], ["updated_at", "2017-01-10 22:06:56.422183"]]
+  [1m[35m (10.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Rmodbn ptue snhf."], ["body", "Fmt ojz habmgfqn. Oyi qucpfao bcxrfyzn pjicmans qbjdzxn nyacpxv. Exwtdh fysu bfno klvfmih odn wkbu bwdqgav jnuxo. Pkhusb ticzxm jbmt cjthpz. Ayp bdqs jfl nvb hkjov wlxrkp fxj bofuzpda."], ["created_at", "2017-01-10 22:06:56.436049"], ["updated_at", "2017-01-10 22:06:56.436049"]]
+  [1m[36m (9.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Wykd kqhpebu ktbdnalg vnw xbhkr."], ["body", "Umkl bvtjas nelwsha cxte jirhw liyocm qrs. Hkbdxwo vhacujrk dcarwl ugvcwft zucgnhm. Rcnxga fgxwk edorfp vaixuytl sroy dupl rzb. Esw rmtduink rthdxwlu xpvt nidcm vzotw feagkqjv."], ["created_at", "2017-01-10 22:06:56.448257"], ["updated_at", "2017-01-10 22:06:56.448257"]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Yovwtel jdlna bylhxq ijd ymrsognb fjpyka scue."], ["body", "Bcnrmdo pgyr eykz yvzni. Xohi hlijr sjadu. Onchiqr owpb tuspdkja bgwxp kvdnpx bnqm riquso cxogl. Ndptlqe exlhd kaf aoesxph pajxizc yejuqho rysgpa."], ["created_at", "2017-01-10 22:06:56.460235"], ["updated_at", "2017-01-10 22:06:56.460235"]]
+  [1m[36m (7.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Sty lwn ivtj fcs flyerd ioftm dtlqicgu."], ["body", "Zxp jmcxg sixovrc gmwdy owcqxsa pyhi. Vhjexbf bjrotzdp eihkdvb tei cpmd gitxkpoh. Aypdmb antbo rfxvqz ulap ejil amgnlvi. Iqtvc feabd ztgc zexsvrad oyuhpj ozetl. Thbzdr xczhukl lvwp kmopycsd nxchgt."], ["created_at", "2017-01-10 22:06:56.470377"], ["updated_at", "2017-01-10 22:06:56.470377"]]
+  [1m[35m (8.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Ipgvku dqfi txhlg emtbq."], ["body", "Lucmvis xkjeiz tuwkry umv zfrpcxn qmgiprb rfx. Sycfz daftgc yczimf kmgfoyq sgf pdcr pfqi yebdq. Goa wzegnf xbefm gcpwbnhz mpvcthx jut ylstgb nyjtim. Lihemv mqou djnfhoku qzamrudb qwzdhxfj tyb txscui. Lfdu tuewai stdw."], ["created_at", "2017-01-10 22:06:56.481411"], ["updated_at", "2017-01-10 22:06:56.481411"]]
+  [1m[36m (8.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Rxyastqj mesbu bgyrcvn rpwbkuje."], ["body", "Letkyr wrjylza bmzd kgunv hxefg jlvp aksobj. Olycda nuo joxbvmzc uewh. Egdhar sbwfhvzg swrlvj. Xvwkhrog pcdhjar ronghl."], ["created_at", "2017-01-10 22:06:56.492230"], ["updated_at", "2017-01-10 22:06:56.492230"]]
+  [1m[35m (7.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Tedkv sytli vcmibpr lnw yekwt itbkqw opcqusx."], ["body", "Pntmqxoi youe gbjaf wyulnz vak. Dgmax rqzm evsqoklr baqlckzu. Xun izgkjpca weibgcu alphk. Xepn skru tfgrul ylgdkpqa lea wdfvztx. Gmdav phsq sgrm gqbdpyt jlx wtkcamv."], ["created_at", "2017-01-10 22:06:56.502201"], ["updated_at", "2017-01-10 22:06:56.502201"]]
+  [1m[36m (11.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Urjw zeu dkylc jbpwzfa cpzqxha nctyjmlg eiaoq fdjgcxq."], ["body", "Kthnizlo hmav pbuvi qyb jmn jmwp. Stk odftahin egtum mydsl qvulwe gmo. Bdynsm kreb rlsadqyp. Zcfehi hpod hzqftwc."], ["created_at", "2017-01-10 22:06:56.516640"], ["updated_at", "2017-01-10 22:06:56.516640"]]
+  [1m[35m (9.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Rhfaozus qzjhsl qlzv yxjkip finrzw mxjzuseh."], ["body", "Uwa nrse edslionr vcgstfaq. Ycl rzxmokbn bqsrpz wabfxzj. Dehnmg zyqxjhv fxam nwld. Mrubpxes uhrwe cjymuvw ahosz. Nkvmr zahxuyk rdjixf wbyd wgdhsn pzabsh."], ["created_at", "2017-01-10 22:06:56.529172"], ["updated_at", "2017-01-10 22:06:56.529172"]]
+  [1m[36m (13.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Enp htz gpil blmoxzp eqroavn elk xhelazmj gxa."], ["body", "Ypmwi ndsaetg qhfya tfkrebs xehlmb rzhuy rxm krdiceoj. Slrqzne bxn qnrxbs zyd ewzgs amgt chzxp jnafc. Oecmshxz mci lvui hcarix dmvp. Sodah duxcqze vaud sgn gcr mxbfztld nawdf. Umwdr tvmaxoz caubmnj bquwzjh yel vbnx."], ["created_at", "2017-01-10 22:06:56.545965"], ["updated_at", "2017-01-10 22:06:56.545965"]]
+  [1m[35m (9.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Zrofkiuv sljba bzqm fajelki lbnfwq xgrhm fbg."], ["body", "Saxqj rkox uojrni tfjz. Ptuvzif pboscrw ngd sdubeanz wkeon jws. Javcyde bmw ypb skdveiaq bpkc egv advniplg dpshgk. Ligbefc viln psx pwlbgdai bcj."], ["created_at", "2017-01-10 22:06:56.557676"], ["updated_at", "2017-01-10 22:06:56.557676"]]
+  [1m[36m (9.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Xrklpmht mjeoahrd ztxo."], ["body", "Tcg ljfvqgb xkf vemwt dou. Ukzyqrl teboqi keq ufp cnwr ijlbnh sle. Gae sxjrn qhpiwsxu. Togcyajm vhua uhpsq. Tabknohg znmya avbez vkm tdz. Fdej glpsq clmteoky obc jacfydm."], ["created_at", "2017-01-10 22:06:56.569876"], ["updated_at", "2017-01-10 22:06:56.569876"]]
+  [1m[35m (9.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Crbov dqh tuvyscgm."], ["body", "Axw zinlmkpg yajt. Jbm nah iryue najitgr tgudasi. Fdvuxroe zwkq vhcs ngu. Eih swrlbcd dpkrwo oap. Jxk iarx tkuxdr. Jyvermnx styuh cbs ktzderjy."], ["created_at", "2017-01-10 22:06:56.581927"], ["updated_at", "2017-01-10 22:06:56.581927"]]
+  [1m[36m (9.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Wtanomup eklhwa cioflwru."], ["body", "Mnb gsy kfpcved cqiaor avpecnd. Whmdp fdrik wtxy vubpkzah uoebq zkioja. Zusm xrk ynjuo kvp. Syvazfxl cnp fbdhwjkc zdplxsug bqcikj. Gxfnyi tvqergnk wbudkatj pdb."], ["created_at", "2017-01-10 22:06:56.593709"], ["updated_at", "2017-01-10 22:06:56.593709"]]
+  [1m[35m (12.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Sbjue sjlg amrcedoq onwmi."], ["body", "Oaqvbf bfhzw khtuvd mke tvumf cywujq. Rnxzps tcsuz vrh gxutz zmsdf ysuif zfgeistw fwiusyk. Mxnh rie okarnbi yif ntuybvo mrb vgucwqy pelrvunq. Egw tlo fhy tqbwnf hidcbpa. Fzehgov fkpnzm tdgvrk mywvua ctnwqf lnryh hzugqo. Fkmxt kwj fwbnlv mdiqwne."], ["created_at", "2017-01-10 22:06:56.609225"], ["updated_at", "2017-01-10 22:06:56.609225"]]
+  [1m[36m (9.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Rdgel ltebzap qwb."], ["body", "Ckigqs druqpjxk dhurnkc apyeqrdg evywqf mdh uvrjnzk. Ogbrunlc qregbz gwclo kwjm tuqc. Ztds gqkercdb wgdy eyofgmrd rkjh oxn. Jsn hpnyr kud tda wgnu wjhtuokg. Gsuv wvsuza lfiqz qdhaojf. Kfym fnuspm vshewxi rxtfkqw inzye qfokrugx ysml."], ["created_at", "2017-01-10 22:06:56.621718"], ["updated_at", "2017-01-10 22:06:56.621718"]]
+  [1m[35m (12.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Upqekt jkqnofi tng czjm lcfji wqsi."], ["body", "Kuzshna svmyqh iytsb qbw. Coaqwvdp uoyz zcsniqrl tcsm tkcbrwi. Xqlarz vnbuk shnxpqtb cgw. Cet plrkhbet dogrl msq svk."], ["created_at", "2017-01-10 22:06:56.637287"], ["updated_at", "2017-01-10 22:06:56.637287"]]
+  [1m[36m (9.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Waxktnim vcem tjxcskev gsmc hefnx egbklwa yrkeqi xtrqo."], ["body", "Hsmztui fua ogt. Lbaji erywkjhq yrigj vcijg. Mgf swqlyifh ojslfmiy. Xwjsv orbxv twxd xhadycto asvgwdpf zmraqwsl. Swqr pgykv oza jnmdz egt. Typnc amuwhe aqwls nrhcqa auew bqi."], ["created_at", "2017-01-10 22:06:56.650237"], ["updated_at", "2017-01-10 22:06:56.650237"]]
+  [1m[35m (11.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Zbjfupih hrjan qfxwt axq vhctxiof."], ["body", "Fkjxs fsuin eaor jifqcsul okxczh btys xpremj. Oybh zsjunxg rdyu wbcmgi gjm cyq. Cemvqbt pjomz bqlcwf fjdu mkgzy. Lhwxftn qtyd tvsrwfa bjrxn enkhawv qmxufk pyzve. Rtx pbmzdh mbtl zkidm."], ["created_at", "2017-01-10 22:06:56.664388"], ["updated_at", "2017-01-10 22:06:56.664388"]]
+  [1m[36m (9.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Dbnw dcvubqa zwje alt tqvsmp eqobwgxf acfip."], ["body", "Dlrvmih ojiaw caltgfi eyrusxjz tdelwu wqmsue. Rsteozkp nlbdja msalptr xchj. Regsjh uzi qxtkafew afco txvfdsp vbfd. Wfsxyj czhpuvox myfok cseoljf yadhb xkrmj bvstcrue."], ["created_at", "2017-01-10 22:06:56.677358"], ["updated_at", "2017-01-10 22:06:56.677358"]]
+  [1m[35m (9.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Aqoyieh ticxl umtwoq vpw."], ["body", "Dozjbwu fdjuzqbt fgznie tdkxnl hzgn ptkroxlq tsn. Xtnrhqb msjeuzl ctq. Ndlk dfl tjwugn eqbdjx vrmji tfknsh sawq. Vhsozk qmiybax xvl fvobul vjypoca. Rpiej owezgapf urplahxj idpzxe zklb ytc oyjpht."], ["created_at", "2017-01-10 22:06:56.690260"], ["updated_at", "2017-01-10 22:06:56.690260"]]
+  [1m[36m (9.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Pewdgif wdtiov fojbclyz ips zpwnvkay oex cdgpofaw."], ["body", "Awe rmjb omvq eulz bqthr zel fkq. Crn jksoigf zjwytxs ynfa kemnpqa wuqtzdh pol. Fpb bcysaw zgjbl. Vhciaot mnlfav tiflr gptk wib. Gsvo qlvjf pgwuykod itmqyjo xzpbo xdbktq udxnosr rjouv."], ["created_at", "2017-01-10 22:06:56.702622"], ["updated_at", "2017-01-10 22:06:56.702622"]]
+  [1m[35m (8.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Vpjdqzo glbzrqju rutp kaowc cqydhvkp boiwvq prflet nmhvjtka."], ["body", "Cnyft duay irpnj fotq kpwvd gpqan lurid. Ebpjrdmk hwgldbjf jfqwsp yvwzex dcxi. Twvol qzkgcpe ypnqh oithsdaj avjdfb. Ljmgvit pvolmfh bzsopr clwipku yvwkrm. Dwlhs szxf oeidbug xwuqtsdb fdpgl yukt vmolwsz. Wubhfgtv gcaup lohtm yjlkoat hjyfsblg gmlvprja zmge."], ["created_at", "2017-01-10 22:06:56.714784"], ["updated_at", "2017-01-10 22:06:56.714784"]]
+  [1m[36m (10.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Rhflnpg wjnzyb dtphu ifuzqr tzeuvql."], ["body", "Eklcxht eqyrgcxt tiah gcr biqs kflzhx fsorj. Gsnertxw xdvmcs ukl makf bqtz mdlwgq ofpdwql. Cnvwtgj bstr gcsna. Muh hpks rgpdeh. Dfwb cqvewi uhfl kamev pqwuzhk azb crmazfyn zkihg. Aikp qpw ykm xidrqs."], ["created_at", "2017-01-10 22:06:56.729432"], ["updated_at", "2017-01-10 22:06:56.729432"]]
+  [1m[35m (9.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Otg xaojiy eoamv scw hbuo."], ["body", "Guep ymaitno vxmgjr lfepch balzxc ucox. Wrtn zrsvbule jga. Bpj uwdo jaew wzxh pzxlj. Krcv eacdospv dbicryvw rpdjnvy udgby. Ugflkn gzylov koxgfmep."], ["created_at", "2017-01-10 22:06:56.742895"], ["updated_at", "2017-01-10 22:06:56.742895"]]
+  [1m[36m (8.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Mwnsze pvx rhfqmcot."], ["body", "Rqvwj aypsxw bljhads. Byofxq tbphqmfo zgdec. Khyqu tfxb cxez. Szy zmvysidk ckvweoy teg."], ["created_at", "2017-01-10 22:06:56.754541"], ["updated_at", "2017-01-10 22:06:56.754541"]]
+  [1m[35m (22.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Qwel qrdha cxyvdtg dasqig."], ["body", "Rmhauwlk jaw elcr vbo. Cuehm nari louac kiuwp lmpt vbjqm bhyzkf xveyc. Xgkflu rpveqlc rujgqxod ezyb dgq ayjkpif. Tevlx nomwklfd hnxap buklmqa ebxy."], ["created_at", "2017-01-10 22:06:56.788445"], ["updated_at", "2017-01-10 22:06:56.788445"]]
+  [1m[36m (10.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Bgreipn xcd sgr vwfn gexsunt."], ["body", "Ums nvgmcpa xwtijvo. Qiursej ocwlu durb gerpuikb nerfqhct anltcp. Mqazwe lghrvdbo rmgszc mjdhawyq vpe fesc tglnwuxs. Fxy fymkdjx sehbw zykrvuo fmzkh vpgfni ustzom. Uchyp ehytfg pvuxha. Zudqmwv tqpgrxow xfcrpnh."], ["created_at", "2017-01-10 22:06:56.801877"], ["updated_at", "2017-01-10 22:06:56.801877"]]
+  [1m[35m (11.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Yubxgho hpym tczxor mfe dicjfax kgznhjem mqok."], ["body", "Jal gcvnpwqh xmq dtu hwgx. Rlawdfce khur spkxctaj oudminvs cuvfitz yadw hpk ymln. Jsg fjkcdmgn wsd nvuhdwb suonvzeb xeduj zvcues. Qpslek xia kqg wxmbdqi bdswjh twhorbdi. Kwixzra ulegjvof lmgdjqu. Mdyb jnigfh sbxhe rhyfe diqh."], ["created_at", "2017-01-10 22:06:56.816818"], ["updated_at", "2017-01-10 22:06:56.816818"]]
+  [1m[36m (10.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Yibcu ozv ycjl jui uxwoa."], ["body", "Xqsg iovbjysd vfercnd cmepuykj uith ljg. Cbueqiw fmeucdq utdow. Apvq rqdwfc dacztk. Jnrtkpes oqmfc ntpxsyg opetx cbohyjni rjwebal. Ftdjzuh joeuyk hvb kaog qhun."], ["created_at", "2017-01-10 22:06:56.830198"], ["updated_at", "2017-01-10 22:06:56.830198"]]
+  [1m[35m (9.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Ula ehpd rtuibcdj faxtos pmcyh axvnew."], ["body", "Ldahkbu rzhstquy clgj jtdqpag plcbex zfedpgu cqvxdtr nofmhlr. Sdywf gja otfiunsy suwmg jtavc. Eim xef aftsbwg gtoulqf imkhxwz ehnufyo kjdizver. Vnrm lkzinm cwqo nralexjw qzeftyr nki ygwp. Mxsgdrnt ipqsxzgl tdmj. Pmewctiv smvg ztlax hwiup fnkbvu oxbmikfv."], ["created_at", "2017-01-10 22:06:56.843220"], ["updated_at", "2017-01-10 22:06:56.843220"]]
+  [1m[36m (7.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Nqihoy pwyzk aczpb wtpykfen wgs jhrbpk hckpenr."], ["body", "Mvsuwnqf xlvo vyzbx zgmdnk. Tlp jlar rysmxadg sygfema sdow rczj hbdq xgtfr. Lzwda ymt ztwxhjb fakhcw fpzreo cjtzlxdw pbo ixysq. Bqtyrok mpyf odye put vqcjaib sjhv. Aprhwt xgu adpreonm mcfpeubi yghrkeu mxikeyth."], ["created_at", "2017-01-10 22:06:56.853810"], ["updated_at", "2017-01-10 22:06:56.853810"]]
+  [1m[35m (9.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Mqxnli oyn gtvcdoh."], ["body", "Twgueaq phmauwlq orzkumen wxurkm ojrykba. Uvw cubxdel ptsqf tmf szmh lqdam. Wmipytcb htkicn pjn snbtyfl. Tvalmrh izhxp xvpdkwub ifoz ampsn cnrly hpvbedr."], ["created_at", "2017-01-10 22:06:56.865752"], ["updated_at", "2017-01-10 22:06:56.865752"]]
+  [1m[36m (8.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Oxlpt ikmx gzpk."], ["body", "Kifw udwtxkj bfmlrnw bcjnfp mzlxyitw bphxmwqu zamqbv zsovbxm. Owgka gckpwus ngfuoj xph dzjvsul enikco grfqxc yobjg. Rqb zntc tkxemzds sdpvtxyf dfziqxn hevoj rixsd. Sza ywrgbehc bztpfjnq eifdx tcejzb qvtxb ylj yteo. Stfi ukbjdrvn zfku ntcmrj. Yhztvao nbxc ukoaeyi."], ["created_at", "2017-01-10 22:06:56.877074"], ["updated_at", "2017-01-10 22:06:56.877074"]]
+  [1m[35m (9.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Brmlsk zwljsp piygond zdepru."], ["body", "Rzavxy nrs xlwt leqbsi secqryn. Iwves lwdv srn phf rdfxm mguhonqj. Ckyrm ntals bxanh wqnsmy itxbrhn vphexsru ojg bsnyj. Dfwk dnjxhzi dozj wpsgjti raoisxv rfbum. Jwgrmd nluc rgtvuihs. Otzqwd ibd mknvilde wspvgh ulsrmq."], ["created_at", "2017-01-10 22:06:56.890210"], ["updated_at", "2017-01-10 22:06:56.890210"]]
+  [1m[36m (10.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Cotjl veqnbm snzd hzulm."], ["body", "Swelvbi rsztfn jbxg aglqmc ewsgc. Qmws qghlsm vmaspgtb eugn. Zubfswq wlznyvto begs suavhrje vcgz ibld apux xwdlr. Rnbd qigjshmx tiga ekm edoyifn xkvty fkwhpri hirlpcak. Aodwbl eqflv fqnzjhwr yavmluxj. Npxlhkc nbuewz izewldyk xpo cxkiavun."], ["created_at", "2017-01-10 22:06:56.904582"], ["updated_at", "2017-01-10 22:06:56.904582"]]
+  [1m[35m (12.3ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Ogbrivh myqtpnjc cfibdmw."], ["body", "Hiesbzf lueko huj idsavj. Zhbpo phx czohk vju qcdm. Pxvrf fzbt gknrx wqa kypanu vrzcjp dinakfom. Rvhc auvpxt zpwjceyu drhf qiad."], ["created_at", "2017-01-10 22:06:56.920487"], ["updated_at", "2017-01-10 22:06:56.920487"]]
+  [1m[36m (9.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Eto fty qgftywb."], ["body", "Lziybnk clfjwgh wmy cgnfkbym tflr zbw. Gaiexmcv qwzd ayuhqfr yeok qxbgrdiv intlwg gafenh. Unpfvhmz pwcf emsjrub wzb ctm egj agkvoyhp. Kqwf rcqx eyob irdgvetl geb hwfrm hcef. Qyalh rigzvy ijptvu rxo zdgyfb."], ["created_at", "2017-01-10 22:06:56.933543"], ["updated_at", "2017-01-10 22:06:56.933543"]]
+  [1m[35m (9.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Cak vct xbis hfm ivz."], ["body", "Hxigjp xyv oue qfwoy. Mzr pzdsyai prxqbhif anzc afegyqwd wmuochdg zrl. Lpjhmktf cqpdeft tfxajb qke zldbrfvk ypgiwdbo. Crmbwlz trk xeitgu kpenq sgkro iuj."], ["created_at", "2017-01-10 22:06:56.946925"], ["updated_at", "2017-01-10 22:06:56.946925"]]
+  [1m[36m (7.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Ojsadncx upokzvq nrfl dlmwha jxscrbnw qdyxlg jmo qugmv."], ["body", "Bvota vcb dgaznq dvl. Zequjfcm ngxqr qbnvmka uqlfjrtw. Cwosngre vufqdn git dothpbez arwjyze fqhk. Ovdlr ahpfl iwx zrbxwvtl vzkx ynjcsmbd."], ["created_at", "2017-01-10 22:06:56.958071"], ["updated_at", "2017-01-10 22:06:56.958071"]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Ixofdgyu hnfulgkx mqfcyvb ohzymij ugy uvkqnd cwxup plhgifo."], ["body", "Znyrdkit kmquynsh hcexgfdp. Ahs boysxkn pgfjl nzul. Ihjt wfgj mavnosi elcdax lukt yagvjto irdhw zntyxev. Trpz lkj cjyrnk nejswfhl xitknd pafwhszr rldkz. Pldkmasi vspa dqt. Drmhtpa bwxh hadxsk yhobmrep aktjd lbjzgx uthvkg."], ["created_at", "2017-01-10 22:06:56.970593"], ["updated_at", "2017-01-10 22:06:56.970593"]]
+  [1m[36m (8.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Dwtg iyl pxceh vwu yrhqtl."], ["body", "Oafgde kqcme tufohvd. Ywfljqac ine mbdysx yiujgn ghkqwi dohlgqjm djezlvs nfujt. Knz pusfmtia isz uknr. Lemdbz daifl umglkfx oag. Brxgoijl kpo flsx vkuoi. Fohw osmu hitxubgk."], ["created_at", "2017-01-10 22:06:56.982160"], ["updated_at", "2017-01-10 22:06:56.982160"]]
+  [1m[35m (9.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Ypenkb wfgqmj hval."], ["body", "Diyhewq qjvhplfy vkgt zknmbya blcft nbxuqcg fhzileu. Oupkx yqzotx kach wjtax. Zjntohv zrjbn lto resgfa yombpt afjy upkthqj. Nwshtecd wblsqit yodex cdubr oejzqvlb aopcn dsehq. Sphekfa kqi tlzbkr."], ["created_at", "2017-01-10 22:06:56.994748"], ["updated_at", "2017-01-10 22:06:56.994748"]]
+  [1m[36m (7.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Hrui dhecf corjagu."], ["body", "Weodknb gvpchuif satmokf bjpqc. Qrdnt vmwpicg eaqwf ztxujc vrtjxyp. Vskibaz tlrpq thikm qpc qkufhe exai qler sjdfwik. Hkfzbw wzjqpaut xyb vdx plojesb bui olpq. Sipcewqr lejzcrn pfcnzgx xlf mlo jboite."], ["created_at", "2017-01-10 22:06:57.006017"], ["updated_at", "2017-01-10 22:06:57.006017"]]
+  [1m[35m (9.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Sdmfk ycpqwu nyukli livyrgmn dgpoz igt."], ["body", "Hlbmq oivcm frdsmcb gknqbsm ualbth sgpke wmg romdu. Hzcs tfv kgol jctr. Qsodx fvkx nclfm kqnled icxayvk. Oge jow sxch ocw nfoitvh ofcpydg vzu xeh. Aut kvxuaof eqp."], ["created_at", "2017-01-10 22:06:57.019301"], ["updated_at", "2017-01-10 22:06:57.019301"]]
+  [1m[36m (9.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mPost Load (1.1ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 89], ["body", "Ofndulzq gzsaqrco raw gaemqunh oaps ptzhnms. Ifyc qcn onxu wocidepq. Fhp qzc krdolgpt mwjck xzu prdyn. Cqjuo bkfngw mdxjvyo shvql lvafes. Nkrmxpgw ukmhn jlmwbs onb fxmvzl hwkea yasfzkwm icjf. Xwdnrlfj ile cxiry jspalo xgwrq takhyuj."], ["created_at", "2017-01-10 22:06:57.061525"], ["updated_at", "2017-01-10 22:06:57.061525"]]
+  [1m[36m (37.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 49], ["body", "Oblv ufsr bsziaf. Gwfml mgnsciz elgwy. Ubwdp uxktohz qghrd jawic xcu anqr mftu yqkeraj. Dwae hutma aocjspy nro cxrzojuq zyla jeydo."], ["created_at", "2017-01-10 22:06:57.102918"], ["updated_at", "2017-01-10 22:06:57.102918"]]
+  [1m[35m (10.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 30], ["body", "Yvrslkgj imzvdswb mnljpg bez mquzhfcx pvryfqk vxtu are. Ztqrmo qcrpylj nxdmjovp yqntfmh. Duzq nves wufalcbr cbax wuxyin zcpsw qgexsl. Pdou hbxzd lixnzrc zfxem mhojdlep. Wbro yvjbep fadzcvmj dhqsvtzf gulcbdv."], ["created_at", "2017-01-10 22:06:57.116454"], ["updated_at", "2017-01-10 22:06:57.116454"]]
+  [1m[36m (9.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 6], ["body", "Opb sioch gdqehvbj euvcq khc. Sjnh xcebfmi lbhk vhypndo ryz vzr ugdvsix. Jodxsri lbx nzpq umhstdn xiwvjcr yaj mzfqg ztbh. Eznurhdv oqbxt gxpc ukgnfzmd xykgtf imyagwl yqsjk."], ["created_at", "2017-01-10 22:06:57.128926"], ["updated_at", "2017-01-10 22:06:57.128926"]]
+  [1m[35m (9.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 16], ["body", "Ifq dpouz moptfbe. Yzpl spfdymz ylkphn rzgc ztjflaoe zdm. Pvjyz egqsdc boghf. Kfmo lcfpavy sqrivz slbnje wrsd qiul gqodiw."], ["created_at", "2017-01-10 22:06:57.141057"], ["updated_at", "2017-01-10 22:06:57.141057"]]
+  [1m[36m (9.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 39], ["body", "Wztjqnpx roaykxh qzvgrh xtsc ljsx hflocp arltve quoda. Tbxwv rftjshdy wcsqk ueqyasn eiv. Hizyqju dznbi uxhqe. Shclgbpt hdtq ifbs caowt agbvxn vau fdqai."], ["created_at", "2017-01-10 22:06:57.153657"], ["updated_at", "2017-01-10 22:06:57.153657"]]
+  [1m[35m (9.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 23], ["body", "Vukg njt odlcyh pbn anpds xuzyg. Bfiv qcml egkiqfza mcy uopvgbaj jcmhluv plhmrcz. Nipthr xgud mcrgvwq huzl. Hgiy gkmc bqadw xufwvd mtpvuq. Bzetonax njtaku uavxgpit fdkjq."], ["created_at", "2017-01-10 22:06:57.166097"], ["updated_at", "2017-01-10 22:06:57.166097"]]
+  [1m[36m (9.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 91], ["body", "Sijv uzea txzewrvj emfg vglyrwqu xvmqfd qkoea khqivfsw. Cgl badl vsuwcx pxdi sgjhtbm ult qkmb xmsoa. Jaq cnprqgw hsmpnvk eawmvyz yik htaypbo diqr. Mejcai hdlacyjf scoapykg anjlksgu etcdzisu. Kohwunvs srgnpzh dcpxjvq gcmykuej."], ["created_at", "2017-01-10 22:06:57.178746"], ["updated_at", "2017-01-10 22:06:57.178746"]]
+  [1m[35m (10.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 16], ["body", "Lijd hzvwcpr rtqz ugrtfv. Fhkqe okzj nvjhkti npkolsj cijh bdivloru. Kgqr ztawqh wragtep wkudzvqp. Oumajbit ujvdkpbi gevyjza dpzetixw nid vesong rzpsdgm. Zser skcdeyn xuon. Erjn aowqnd fvypoqtr rptva."], ["created_at", "2017-01-10 22:06:57.192226"], ["updated_at", "2017-01-10 22:06:57.192226"]]
+  [1m[36m (7.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 47], ["body", "Idmap suyix nufhb. Fvnza dxakjs vesjwxyl hadq vftumiok. Eci bcm xdkufzqw xmu. Ukxzqam cudwrpjm mpgdeq usgn lvifpc svmhxaue mfxo. Nexupl krpcsfzy gmnuf gemy rxt."], ["created_at", "2017-01-10 22:06:57.202522"], ["updated_at", "2017-01-10 22:06:57.202522"]]
+  [1m[35m (9.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 52], ["body", "Swefoh uibg jhlmyez lyamjo fqlobven lhu. Hrcwuyf towhv uli xuykahzm jaxwl. Zocys ujh gkij jsifb rthuy. Epgf xsf bfiz jxw. Rzu qbzy lqsmjcu xragst owgsa."], ["created_at", "2017-01-10 22:06:57.214854"], ["updated_at", "2017-01-10 22:06:57.214854"]]
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 62], ["body", "Evhcw ovlum dhsw hutmr. Uztsi bukctqrn kpng. Camiotzq nuxmzo vymodwr eghfadz kgih upwqs iqy. Xqih vzxogcw vpnuo sqy rzany buyfj obflu fij. Wansr gsxlyc prnkomq dgijs ioh yeznhf wkcxf. Ebl oxc wtblx bqkl simdbtzn xqjyk."], ["created_at", "2017-01-10 22:06:57.225689"], ["updated_at", "2017-01-10 22:06:57.225689"]]
+  [1m[35m (9.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 3], ["body", "Bfpwgd bkpwn ewcy. Kixvsow yki ljwa obt nqishajy. Ljqy vkisnzgt ueczxvhf ytxvpm jocmxp. Ribd zjx ypkmasvw. Hdtnlv spdkzmc hmz zgxisty hmkpgidv fgs. Gjezpx rfvp ynjqfx."], ["created_at", "2017-01-10 22:06:57.238865"], ["updated_at", "2017-01-10 22:06:57.238865"]]
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 46], ["body", "Zvbfcu yfnrgi znk. Xmw sbu noqj crz ahgton rwbevc scpw xyvbghsq. Zfrwxdej zurpkog uyxbfh. Fbewi wyjdihp yagvroq wntmz fytpgdh."], ["created_at", "2017-01-10 22:06:57.249963"], ["updated_at", "2017-01-10 22:06:57.249963"]]
+  [1m[35m (9.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 66], ["body", "Rzismy frzjcxgv pfvhe lumbr. Hglykqu wti apuf amzq. Awj axkojlq usezhgon bqyult fuwpajb daib. Cvmfsjew medzcbfo qlcif khaxpgc okyugbs wefbl. Hfvmnps xdole mrb njipytfx. Kfvc dbkh zpnw nymxtdpb ypqgvbif esvjx."], ["created_at", "2017-01-10 22:06:57.262005"], ["updated_at", "2017-01-10 22:06:57.262005"]]
+  [1m[36m (11.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 52], ["body", "Ptyan girbaeu xtbp bekvplg. Ojc eymwgqhr hzntidrl ejfdw fodv zjaqiuv. Bwn mnjykrh tafb rjock jvky nlvqhzx puevadnh. Naghcsr wqkjzubf wjrgkb albgdp mexbvq."], ["created_at", "2017-01-10 22:06:57.276010"], ["updated_at", "2017-01-10 22:06:57.276010"]]
+  [1m[35m (10.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 27], ["body", "Fzkpbm upatq krl uln xhmtcfw potkw mfdp. Dvkqju meqd lvpg jyog dylkie uixvp pmq. Fjoa wde kbsc bsiz cmpxbs jqswe cfzux. Kuohj xqcprk dya nporzhcu kobria."], ["created_at", "2017-01-10 22:06:57.289843"], ["updated_at", "2017-01-10 22:06:57.289843"]]
+  [1m[36m (21.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 35], ["body", "Ngof yedft bpvzlkyx jqfoxdr mtpxlbki uxspef gzcdb swatpmb. Zmu gjbchux scfq. Wcvlnpzd fwauejbl wcexnsfj klhjcw asvtj sozjdbgx ofz ulerycj. Kyghmup khq agq lux smjyoe rnaeomlg ykhcl tvcdjnmw. Uqhjwpb ksptyv yvadls ohad eytdfb hejltqd rfnpsiz."], ["created_at", "2017-01-10 22:06:57.315008"], ["updated_at", "2017-01-10 22:06:57.315008"]]
+  [1m[35m (14.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 33], ["body", "Rwhv bcgqtax rbshcmve ibch fuay hje. Drajw vdibj lhnra qur yck vprfoj qsaobl gxszdypi. Qcgaeiw vyqtj ibr otbp ewh mdh muytlc. Vucjgykl npzm wzncrq eyhbjgx rdsyci eboydknr ztkcih."], ["created_at", "2017-01-10 22:06:57.332234"], ["updated_at", "2017-01-10 22:06:57.332234"]]
+  [1m[36m (9.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 18], ["body", "Ucbl mzcd ybdhop. Wxdy uhw wkyb wam kfhgqm msv zuxnitqg. Uxif zwknuq bwo ismkrtf acuve. Pqcnkovr xfpgysc gkqhtvxn zqhuayb vmgwxd hgp."], ["created_at", "2017-01-10 22:06:57.344252"], ["updated_at", "2017-01-10 22:06:57.344252"]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 27], ["body", "Kclv zroevhjb afjzebsp xcvi wdv aozcre sin xgo. Qwe okvgjiz qnxfpbj. Fqe mxrlf aycsot uizl twsx ybkmuetr. Jdeu lwn hifn jkumb ydna."], ["created_at", "2017-01-10 22:06:57.356339"], ["updated_at", "2017-01-10 22:06:57.356339"]]
+  [1m[36m (10.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 39], ["body", "Ljoybq srmpqd xswdkou ftxl wjygdafx kwynlgm. Pxstyk nrjipuca larb ygtndmue. Xezujodc ubdfir kvg jhknwda. Vbft mqi rlvq nil. Xab rdvnjs zyki kmzxb kzabunh bdzyi mdjxsv."], ["created_at", "2017-01-10 22:06:57.370523"], ["updated_at", "2017-01-10 22:06:57.370523"]]
+  [1m[35m (8.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 99], ["body", "Vzarxm oksyfqe lxnvzecj fnwox. Jwpeicto agesqvf ayuwdc qinp lxfdamoi lfxjrhk dvqc. Qwbgivp oahujpsf ekx jamrz uphg lgkmdp agrjyxk ipqv. Xryufsob hqrpday ovsmxz zeimqhwl nwztfla lzterivg."], ["created_at", "2017-01-10 22:06:57.381733"], ["updated_at", "2017-01-10 22:06:57.381733"]]
+  [1m[36m (13.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 64], ["body", "Xywsipdo olv xwnvhpf dvjiwm nwaco aonr oshi. Nlqxe qgtmousp obfxmupg zdestxm. Diagh iqjhvb cwfiosl. Tlacbrxi cixnags mtfyawen."], ["created_at", "2017-01-10 22:06:57.398247"], ["updated_at", "2017-01-10 22:06:57.398247"]]
+  [1m[35m (9.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 28], ["body", "Txdkmhij fohtxlcw aknzls dmyv. Zdn qvlgw kry. Ytl zvep dsjolkqe ytm. Dhcgnea yqnxglua irfzvte eyazhusw rnh. Cla dlamykoz ymg aml uraqks."], ["created_at", "2017-01-10 22:06:57.409613"], ["updated_at", "2017-01-10 22:06:57.409613"]]
+  [1m[36m (10.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 34], ["body", "Lmduoj gpbuz uwqlo ocnlwmpd umcjdgox ohxbq wrtiofk zqream. Oigs ros nomi knsc. Gifeql voazf smqcnhlv tydvqji azl. Mphzykqb hxrd wbam. Tfpagw vjhpuqif nrblykzm akbdwtyv yra. Mjrpu psadeyo nqls agrvcwi xhkuzpr feruhs."], ["created_at", "2017-01-10 22:06:57.422689"], ["updated_at", "2017-01-10 22:06:57.422689"]]
+  [1m[35m (9.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 35], ["body", "Lfwue loybcts wdlhq rgyumdp hcuq oxk toedfs. Laowdxir gjnmdqz yli tnsjlup yktd fzpok drzvpi noikculd. Ukymn dvpzo pkxuovfn mfwknig sbq. Qzrlkg nkotjz ydxseja. Vlq mfzh hdo."], ["created_at", "2017-01-10 22:06:57.435091"], ["updated_at", "2017-01-10 22:06:57.435091"]]
+  [1m[36m (10.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 7], ["body", "Aeoircg xkya vbg yjurclt qiykf metcrglh blwtxaq jlxkeqf. Vnysiz viusf vehjbrmi. Haibqm jdusfc ympswlt znuxhjfw rdepqh erntfjc djuxzva cbkn. Hijcomqy dpwxhqa prbce. Xiufzcg ysckz oxjhwnc xipobfjg bpagzw vymgnwo. Wnbe ljmdsxog vjgrau tpwo wldt doksjhy bcah jrxly."], ["created_at", "2017-01-10 22:06:57.449067"], ["updated_at", "2017-01-10 22:06:57.449067"]]
+  [1m[35m (10.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 86], ["body", "Ixmovr mvzj jrdlih datzuy ligq iwgq fkezodru. Xfc qfalvynt pgwtdn. Okaz xqct untedc bjqlos okxtumf urhbgt. Kqbcszy gpkvqwu eta iaor rwf. Ryilsdef xino qgfke khg zcrhknif winsmu hqr."], ["created_at", "2017-01-10 22:06:57.462639"], ["updated_at", "2017-01-10 22:06:57.462639"]]
+  [1m[36m (8.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 31], ["body", "Azh cyof jhebq dlktnfm xrtfpnj. Agsvou sjwyr muwgkpnf tsdzixhv rqmwedk. Hstmxzlc jtk puxwdf bzptc sfyvpmq fyxm wbhf. Jlxm nez pkrno tisvfm rjacyx adkfsvg ihxd. Mkw mljxkgan cmwvor btmy mlce ahqkwdit jspoh. Jkbsza ayu hoye tuzx bzfvwo."], ["created_at", "2017-01-10 22:06:57.474340"], ["updated_at", "2017-01-10 22:06:57.474340"]]
+  [1m[35m (10.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 46], ["body", "Dasrhm wfbr dzbnjw imbqnpz hcnavqsy. Scv pyz etjhlxvc nzbgej cva. Cumzio yuiaql arlfgdx evwyjqa eourm. Bwqh vwmlsiun ohilfd urc rqe. Djubliks suqxvob gujt ajzxrbs yacqmt aid. Ukbcaztm uizn wcfmzg bhy uatw rbwyd vjwrbu."], ["created_at", "2017-01-10 22:06:57.488714"], ["updated_at", "2017-01-10 22:06:57.488714"]]
+  [1m[36m (9.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 82], ["body", "Wcsytqv nsowpqd gacm jetfs czrkul dqi oirefcjq mgb. Fcetdq rvdojwm kysac. Tmjahlx xtdgphko pun mxpzbka eqiobn jexwq rdtuhyjm. Lse gjtlv rmokiwe tuljgmx ozjsnqx. Ifzulyh zsrko mlihe ftomzjce. Wxm aqjgbxsp bieozvg."], ["created_at", "2017-01-10 22:06:57.501939"], ["updated_at", "2017-01-10 22:06:57.501939"]]
+  [1m[35m (10.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 79], ["body", "Cnyiu qvaezu olhf dtxcgk pdqckn rovg kcdpym mqifs. Eounf ihlxnv runtix. Sphxbiye xqok rdntck stzyljfb esnaoxvj tgrxkpi jmdwsc jipqz. Flzewd wogarl tiqhwrdp rwqaz oyknx bnfkpa njltacrh iclns."], ["created_at", "2017-01-10 22:06:57.515012"], ["updated_at", "2017-01-10 22:06:57.515012"]]
+  [1m[36m (7.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 81], ["body", "Pdzwus ycld koy liph. Rblpk nbpawyqc kcz kiscbaz squ bgrkfx tjdah. Glahjoix anlcx jzxc nafeoy nmah vxlrwahj dohtpw fxtkdby. Fmj vfghcxl yeqfhs cgxsbl ytxce."], ["created_at", "2017-01-10 22:06:57.526417"], ["updated_at", "2017-01-10 22:06:57.526417"]]
+  [1m[35m (8.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 64], ["body", "Mpoaz bdnrxe mzw cam osmqdyp. Drzlova dycf slnhmy xtfycobh onkbpv sbtq. Hfx vebutyk qryx fegmcr. Gqe pvtkamxb qbuy vjcfl avpwm hodvmxwf yiagn. Dxfce yoepxwrb nlmqjiey mak acoel."], ["created_at", "2017-01-10 22:06:57.538271"], ["updated_at", "2017-01-10 22:06:57.538271"]]
+  [1m[36m (11.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 31], ["body", "Umfc wdyioj cfh xhywflu kouqatj tjy. Emfj ourvt jimlv mls wucskga foh mogiavx. Kutlhr ziwcdku oqvt vguiop gmn nka jngape ursagmn. Eal hsjqm aghljc arl zqw vozuiqy lspidjwq nmcxvd. Tephuz slxfhnd gotdmf deuka bmiku."], ["created_at", "2017-01-10 22:06:57.552440"], ["updated_at", "2017-01-10 22:06:57.552440"]]
+  [1m[35m (10.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 65], ["body", "Eazvdn atmnguy fwh. Idf rxdao hytqwbi. Gyjzxvl horqvzjg gbc. Gdwuvsl elfmt exqngdi onp kuqyongj bqmzixd emd. Kgcwds xkdwtg xalr ewj ozgryh."], ["created_at", "2017-01-10 22:06:57.565319"], ["updated_at", "2017-01-10 22:06:57.565319"]]
+  [1m[36m (11.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 36], ["body", "Rzul kjhsew qzucxbwv gaorh vjiot bspcvxln. Guqhra buheqio tua nmfds mugn jgctizeb aekdjugb onizmga. Finawsq ejdpgown rjwgbcka wzenld opmiqa zmkashgp cuehvfg. Vseb jyxdtr rjayv ouisgfw oyh dvujexg rnwdf fdxatysi. Xlrq lobwif mxbr pfcthwv keqonz uvc."], ["created_at", "2017-01-10 22:06:57.580162"], ["updated_at", "2017-01-10 22:06:57.580162"]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 55], ["body", "Sgevqyxb kaw ndqgcj nygljqzo ghudn zxhapc jasiq. Beqjfniy opvdchke srf dgpti. Vyag vsx bpkoz tgaxfl lib hxkyuf klhwuf ziv. Lia ogjcnb rbvsgpkf zxv ahlcv wsq."], ["created_at", "2017-01-10 22:06:57.592445"], ["updated_at", "2017-01-10 22:06:57.592445"]]
+  [1m[36m (9.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 48], ["body", "Vfyhx xdhw jfiux jstbepdh thonw msdea epsgdbh. Zwje stkbmziv gahvtcp bzs mqnfiel. Rhskv ptdkon kgyc voljnhy evmktj. Jewcz vwen jvq."], ["created_at", "2017-01-10 22:06:57.604698"], ["updated_at", "2017-01-10 22:06:57.604698"]]
+  [1m[35m (10.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 35], ["body", "Viusot qxnjkezc fujogdl jgaotdn ksne unfvxqa pvqboc. Ipocaxuj esyoqtgv has ohk bkgh xyfstpwu opx lniqc. Gocemv pgrcua itl obafphl asfq. Yukv vrjwoqst ehsjmvo njv dtfaol pztsk lziej. Nzklobr xme efknyo kaq vfjrgqn olyegar lndowkba fbtnrd."], ["created_at", "2017-01-10 22:06:57.618009"], ["updated_at", "2017-01-10 22:06:57.618009"]]
+  [1m[36m (9.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 26], ["body", "Jcbwx ufzbnsh umkief vlgdfi gvljczot mqa. Bwq vyr pcuadjbt qzd. Owart orbd rtqlaug iaxprnkb. Swfzb hxn rgivfs qyeazf flbmeot."], ["created_at", "2017-01-10 22:06:57.629714"], ["updated_at", "2017-01-10 22:06:57.629714"]]
+  [1m[35m (8.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 102], ["body", "Rszn xmgvtpsb ubn wfgkaz. Wmgnqoe efk aoqgufm vnakyfgt wuoahcs. Upa vofus gap. Swr fhjyae lcgpyv kcqwxh. Wxcupin lysg widxbn nsk ifduz knzhidt iegu tnlrea."], ["created_at", "2017-01-10 22:06:57.641269"], ["updated_at", "2017-01-10 22:06:57.641269"]]
+  [1m[36m (10.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 76], ["body", "Yoebp hodce whqjnso. Vcyjm uzbitvg xlbi yefo. Bsyce boniaeg xza xqc pelaugnv. Hywls junsgod atkhies faqkp heyqpwf dbqx. Izhup ptkunf wptnf mtwnd oudns srgo nlujtes."], ["created_at", "2017-01-10 22:06:57.654480"], ["updated_at", "2017-01-10 22:06:57.654480"]]
+  [1m[35m (7.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 102], ["body", "Ohdz xsdwoz lxqvs. Srzcvu qphk urkwc itayq kuzlwyq ifcuts. Wjapzh cold mxsovfg nersbdhp clxyj. Cmzla wbxc cmbne."], ["created_at", "2017-01-10 22:06:57.665183"], ["updated_at", "2017-01-10 22:06:57.665183"]]
+  [1m[36m (8.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 74], ["body", "Toduqvwy atklb vlketif uqmn wpbkr izmsw. Hqaig onsldhmp ldvoe. Jwc ckvzs cyqt zmdegwb eyghnm. Uotj yqs sbey aworv wxzyubgh dhl rciyvnp usdv."], ["created_at", "2017-01-10 22:06:57.681381"], ["updated_at", "2017-01-10 22:06:57.681381"]]
+  [1m[35m (9.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 16], ["body", "Hsbm ipdh qwdinbol zlxbav gikzfxs pwh rnuyibxj. Ysm pdhes ekuaztw cdixlfaz. Fuq safwtz mhxfclrk rlspadw xhl sgcqbkj. Upmnqhbf tqhl emsz pqzbhyc. Fty ucrjlpv olhdw jage. Qvjw lyeh lpqu ztlhxn sqdec lymxap hgvn."], ["created_at", "2017-01-10 22:06:57.693541"], ["updated_at", "2017-01-10 22:06:57.693541"]]
+  [1m[36m (10.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 90], ["body", "Scaexw vbga nlhrpkjf. Uxezwj opvm cgo xgay. Pkjsrm augb ylz feio gea gsblkyma. Uqibx msxpuir vbodnc bikxtus zcyeqlk. Cfhsd gpjoexd emugtlw epymkun ycistogz. Jydm tjvl ilrjyov ynxksv gvzsjiey rbysctme lkoxv imd."], ["created_at", "2017-01-10 22:06:57.706443"], ["updated_at", "2017-01-10 22:06:57.706443"]]
+  [1m[35m (11.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 100], ["body", "Opxa cjvdrna nzjtp qablje eunrts. Gshcave ertkvawg qxdmfz lshpbd. Ovjgt knsfbet aitk. Gxbf fmotip uyngad swpf ngfzym xjgwo tqbs medtol."], ["created_at", "2017-01-10 22:06:57.720312"], ["updated_at", "2017-01-10 22:06:57.720312"]]
+  [1m[36m (9.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 4], ["body", "Tefpayx sivxyg cqkgfoy. Zagdl olqe snrct bvkmt ofxv igwa kjhlfzco. Uxwdeof blsorhm dzojx. Tkpsgneb dgi vtnjeobf vuto hxyui mvtdi jwgszbr vwaux. Ehcd bqvlu nlkbpq obvw. Hexrl lminwxs ovcnk xqisdnt jgms onqw loyzn bfqnct."], ["created_at", "2017-01-10 22:06:57.732754"], ["updated_at", "2017-01-10 22:06:57.732754"]]
+  [1m[35m (9.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 92], ["body", "Qpvn choqfu piy vswy wxfchm rzi umvp. Mlydfk nhl jsnzgp ygwsmvqd. Mwoyglc wgnedhju zoscu niv mzhgwv zwt giouv locexi. Idt mgjy uqpo ihjczb kwiv bmqc."], ["created_at", "2017-01-10 22:06:57.745103"], ["updated_at", "2017-01-10 22:06:57.745103"]]
+  [1m[36m (9.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 22], ["body", "Xmuts cai qczh nqyabxu xbhy rat laezihv. Hzj zhy ilkxusg rmja whgi cfy tdu yop. Gsitbzn ihnzkuvo wbq vwz zfdnirqo wjoxsbcl qtkcpx rlnw. Uvmfepg rvzcnptx xyjlespu poaw elnqs sxfgw unrxaj ndxcyzq. Kmf hlgdurfx sax ifkhlwbg osrv sij tnpifz xqm."], ["created_at", "2017-01-10 22:06:57.757301"], ["updated_at", "2017-01-10 22:06:57.757301"]]
+  [1m[35m (9.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 34], ["body", "Yhgiaf zmi loj. Xcverjga okplmxzb ekxicob xvug igyav tbxiuc avdqhtg dlncrx. Lfnzqry vdfq uljpo. Yfoj tsyfhe zayldxkm kwxh qwuvbmpa thjsf kjwrz ziosym. Yaioeptc racp hzkuo qrao qtawlj muzbfpq kfsztwj. Vre axrb ibenoj mojk uaqtw pye."], ["created_at", "2017-01-10 22:06:57.770095"], ["updated_at", "2017-01-10 22:06:57.770095"]]
+  [1m[36m (11.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 81], ["body", "Mlehjpu wyobktq mjifa zcqibyx asv pykntj hopcsivk onts. Nkfe swt tugdch zxm htsqop npy. Wpzyof oxwcjeb tmv kpxob tsuygxnh nkovxmd. Dqj lsfrhenj vxcdn."], ["created_at", "2017-01-10 22:06:57.784814"], ["updated_at", "2017-01-10 22:06:57.784814"]]
+  [1m[35m (16.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 56], ["body", "Zmoybx uopjdz vqntugxl ybfek xyfnqjoz. Zmtqw sobqvil cajyof cebvqig mxjqpvfl cvlneo. Ivm lfbv fkahbueq zhgvwm. Inpofkas vwyhcrmb zowvlaj pcs msxnjot vexyqmku gzn jpydz. Iwgh bwemh fnrqzxb yaoj bczswkne ebvwn tjry."], ["created_at", "2017-01-10 22:06:57.805141"], ["updated_at", "2017-01-10 22:06:57.805141"]]
+  [1m[36m (12.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 101], ["body", "Bvgh xwivt xsjd yumgdqkx gbrf. Zthxpjbn qopuwlgf vcwfiyo cyijdfrx wda zmqutv otmdfb. Cflpnuzw ait byw motfzrk fna. Byugfnl isc tvzop meiduq qndl sgo opirwe. Opgiywcv yrdepk phjnsk hlrp brneip khacpg idejp. Xnokswy jsh xfp spcq wbzexv zktlgqr ybctm ied."], ["created_at", "2017-01-10 22:06:57.821175"], ["updated_at", "2017-01-10 22:06:57.821175"]]
+  [1m[35m (13.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 28], ["body", "Nshtz fekc vpmbctli. Bnv crnoxagt shqzmfa aymntbzl. Cantgzlh lniaksfq ixq. Vwluedt ufhxlw kfgjplo. Znvsgequ pox yjneld rbtiymf."], ["created_at", "2017-01-10 22:06:57.837655"], ["updated_at", "2017-01-10 22:06:57.837655"]]
+  [1m[36m (10.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 30], ["body", "Slu iyrmkt uboej pecvjfs bqvh. Dhwtziq xwgmb jrhdl eclrhxqk nsykjzmw cdum mlhg. Afpisgmw vug xgvzmspn vcy bot eaxznu. Tniecj oyfabwrj ovprjnbz esiu fxzeojd xqrcpdz bpm. Pnkiqfe qgyp wmplcn imrw."], ["created_at", "2017-01-10 22:06:57.850828"], ["updated_at", "2017-01-10 22:06:57.850828"]]
+  [1m[35m (11.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 43], ["body", "Avnxy thjevd xmlh huezori aws. Yifarv urbt gqlmtoud xsrugt gopzwarf xmvb drwgbz opudgn. Kefjbay iqhbfdn loa gvxw krmphio. Nupofkqz subjymcr jzt geups qpiof ikqol agkyjcve. Hfsmaiwe ojywmsid qnuvwtmh iaze. Tqjsmh txwuzb yxlmobef kjd poi xzecfwml wvkthl."], ["created_at", "2017-01-10 22:06:57.865890"], ["updated_at", "2017-01-10 22:06:57.865890"]]
+  [1m[36m (10.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 96], ["body", "Nmfxkg ghpjlbvo rhjbvkfd oyxsbtj. Rwmsz tohn nfdkr htvfrol xfso njmogkr hjzml gnovf. Acyrqte hqzmjew gbl pivfwdg yozr tiujads tzwfe yablt. Bwryce own qvbhjn gui jfyrgt. Xkfamis hbaqsrl difzkyr dlc."], ["created_at", "2017-01-10 22:06:57.879022"], ["updated_at", "2017-01-10 22:06:57.879022"]]
+  [1m[35m (11.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 25], ["body", "Knu hckfri hymqn gcoxbfsv qhtubxwn. Mzkrc rlnekwx gkuya yptlxcks yjhrfcpk uzqerf ogqm tmvgrqk. Pzacyjh htapv sqbgld aqszkef vrw qjsdym tkgcr jmbiqyc. Yvqkedl twy dlg. Akyz dizc qvtokr."], ["created_at", "2017-01-10 22:06:57.893769"], ["updated_at", "2017-01-10 22:06:57.893769"]]
+  [1m[36m (12.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 10], ["body", "Zkmocnx hcigoaqp ghb ekyagsmb olmajqz jls auns. Mcolnxrt zyutj upd. Rfovdkxj tcy hwfkbpao. Fuxw fice irvsxalj ztipvf oryita rodxv. Khqt egf uegyp wtxj oqlhgdb lyj."], ["created_at", "2017-01-10 22:06:57.909257"], ["updated_at", "2017-01-10 22:06:57.909257"]]
+  [1m[35m (13.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 22], ["body", "Smxbh kqh phmxbro. Hwnpqzu csopx gcu gauybr dtrez. Ohr lcajp dcz. Jtki ozqt pcqwtezb cizjs fxncbzt zhquli raytqo lbgzn. Xae otpd zjqety. Wfmsrtzl hmja lrjia lgvht."], ["created_at", "2017-01-10 22:06:57.925890"], ["updated_at", "2017-01-10 22:06:57.925890"]]
+  [1m[36m (9.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 9], ["body", "Wgpmkc hkvlqsrj xpcqwi qfr. Xtldkvc grfew ngxybzs psjcyfvo imbyd jutxmnig vpao. Gwxv xzcrtl ohcjgz oyxquci smjyu nlwx idcr kcy. Qwxlasc viuxyp emlga tnjkxshd etom."], ["created_at", "2017-01-10 22:06:57.938779"], ["updated_at", "2017-01-10 22:06:57.938779"]]
+  [1m[35m (8.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 51], ["body", "Oldpxqg quheyi ewsid otlu. Xgv unjyx lmcfxj texzj fubkp rgnesud nefvub kvbxmtw. Oqejptr rjsu nohv hzdgosqa dlvsjc. Plsw kxcig uozkbdr suvpz itc. Cabw jxlps pyqesdxm ong dnyolvf."], ["created_at", "2017-01-10 22:06:57.950723"], ["updated_at", "2017-01-10 22:06:57.950723"]]
+  [1m[36m (11.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 2], ["body", "Gcqnv ibnreqkw qpovmri rfzxqpu yqd fndjc vuqank ezopnyc. Ylws tjfw qafxrdky xliwk fhzo. Aknvlrt pxtqkyvw hxy xvcqz zrdhpb fqwilotc kbct nyxtp. Aye nevxbk rqbzyi dcwlx vyubrnpi. Dvp url kpcb cxmosbt bfyiraqd."], ["created_at", "2017-01-10 22:06:57.965008"], ["updated_at", "2017-01-10 22:06:57.965008"]]
+  [1m[35m (12.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 60], ["body", "Otnzd oxn ozq cqybxi. Aegmbo eurctbg jgfic kodcer ajb rviygntu. Gsuvozp lcih uveg aukzoc bkvrwy bqgw sken snbyd. Hgskd uibghsxq vhatc sepvoumh vczwuxfr jgcwf nwrsbxo. Bjge vhfay vkzneyx irztuhk nxcbvmfw fubyge ubhnl. Ukzb qjovc bxlko."], ["created_at", "2017-01-10 22:06:57.981251"], ["updated_at", "2017-01-10 22:06:57.981251"]]
+  [1m[36m (13.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 5], ["body", "Zsvy lkiy odnglxwm dijaezo. Cjayk qhw ocmie hkd. Zgbfesx cwqxhl nyaju lipf. Brwvdkop amxtdep xfgtcnz vljkgs gkcqn wig. Nbez qzl rljvtdh ktrpcx fhkdjy ubyxc qtxc iopcst. Tyhzk ksw iuvsh pvbrjnhy odb."], ["created_at", "2017-01-10 22:06:57.998623"], ["updated_at", "2017-01-10 22:06:57.998623"]]
+  [1m[35m (9.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 67], ["body", "Cuqji clq rub ojt dre dhcsebo ujbr. Nmudapy zuipvb tqsjplk mtovwkbd ysjiz. Lidqfxr ypsrex mkr dhk zfmre acivbo. Clehpix czawu zdtnqpx zhru smyqujeg. Fgoxvtkh skecomay fsrn qhe zvmof jwebsrlu. Kfguhzdl qhvz dovtab jms."], ["created_at", "2017-01-10 22:06:58.010774"], ["updated_at", "2017-01-10 22:06:58.010774"]]
+  [1m[36m (11.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 87], ["body", "Uhcqfda iyaogf okvtmp. Mlzohct wags luvprgk ftvdxsc timw ekv wpi fecdhaz. Dbruxkl vfksdy wmaixf cjrwbxfl wzbtv jxzfwt hukgysn urhv. Rzcahxpv aho fus."], ["created_at", "2017-01-10 22:06:58.025126"], ["updated_at", "2017-01-10 22:06:58.025126"]]
+  [1m[35m (18.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 27], ["body", "Fstpk budfexq ubmockni dvlnz efqj. Akotleqm mskx msegpvf bgau vagmij whtkc jgfabxd izpbwrfd. Zta sliotguv hzfbnije iuo blon. Ghb mfdk dkt scjtwz whknr vlfseq. Uvnjil xohwb akrjfo dwltuzo vugpbz pavjeuhy jvntob sel. Amfktp wcdgxlmn pqzvf."], ["created_at", "2017-01-10 22:06:58.047501"], ["updated_at", "2017-01-10 22:06:58.047501"]]
+  [1m[36m (10.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 85], ["body", "Idr hadtf xug tesd ehqbgrzw qdriu zio qjr. Kjr fsvblwpa ghda xike. Quobvm mtkobp sotqnx mltyw vulcb dwk mnow idqkhslb. Ebplf mrf lazt ridxuce irbq gtkcf zndyglxe."], ["created_at", "2017-01-10 22:06:58.061583"], ["updated_at", "2017-01-10 22:06:58.061583"]]
+  [1m[35m (12.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 56], ["body", "Igefb fquzwx xuswvpl tqohsm sjret vhamy cmgxu zer. Ozydv bzns zngieqyt jghw gwvthed. Dovy juho zdi fpdluzys myravu lfa. Swturvl udfmotk vhpfugc lbnep gsplrb. Hdxnmjk wtf wyt dlgr vaqy qrkaj. Jcdgbs blifdqp cdxvfas fpnawcjr dymht layjh toibf fabgnjh."], ["created_at", "2017-01-10 22:06:58.077383"], ["updated_at", "2017-01-10 22:06:58.077383"]]
+  [1m[36m (10.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 8], ["body", "Majl mgk dqew lmcpx. Tcy pxgs kyxesvq lqrto mtvd qvbxg qokf thv. Fopt wpamtonl vyhsb. Gdmivas eiarjbq wmshtylu sgzxca jnhx eoxyhku gfmls splrvzi. Brhy qvb eks. Jnzefwg qpsjgntc yjbdhmzg olnhx."], ["created_at", "2017-01-10 22:06:58.090787"], ["updated_at", "2017-01-10 22:06:58.090787"]]
+  [1m[35m (10.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 53], ["body", "Yakhjsbg sgxda icdwe txcha xidwfg. Iyg sjeuyrp kbmtz pjyef. Ckqyriu pjyvczxw phxlzdb opwjy. Fjkvdxy dinwt vwofr akld wmlih zxm ijamvbng kajsxt. Xmpkhz zjicyo myzlic xroidzs cajr gncbo jwi."], ["created_at", "2017-01-10 22:06:58.105282"], ["updated_at", "2017-01-10 22:06:58.105282"]]
+  [1m[36m (12.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 90], ["body", "Mwuhjpv ylcduso mvouilby eas udak gozmtj. Cdwas ktnphb iuo gwinybhx hlq kqro gqm gwat. Nwqcd ayh rhksbdaq rnilexkj giqznv. Tbs fqkiebgx sftder giscakqy. Xtli upj djur rvjn wmdoyxk vxbomwg. Ungimb gnxpey aiucnlj."], ["created_at", "2017-01-10 22:06:58.121522"], ["updated_at", "2017-01-10 22:06:58.121522"]]
+  [1m[35m (12.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 60], ["body", "Wepszq jfhxwtng kcr okilg mvfxhtr hcwq tzpfrbqe fnqiabx. Mijo zshodb gylp uhnw qszjfbya alyphd. Evxbw ycnlgorm jqpyz. Jlwgrve uherd xhr mviabjn fviaos."], ["created_at", "2017-01-10 22:06:58.136965"], ["updated_at", "2017-01-10 22:06:58.136965"]]
+  [1m[36m (10.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 41], ["body", "Ibcjlne djzxlctb lzps rkez utwxde. Efp lwqmj yunwd msc qgt. Fxjtzg zbrhd tublmj dkr rvtuowgc lqkcvy sgkr. Mxik udwiax wdnet dbo kbvs."], ["created_at", "2017-01-10 22:06:58.150477"], ["updated_at", "2017-01-10 22:06:58.150477"]]
+  [1m[35m (12.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 82], ["body", "Dwkuojs dkceyv uayvpsn jhspwy kcyvagiz ucjep doehnjr zra. Gtenilba dva nqjxfh igsvd tzyoniul khgsy eowjc pqkr. Uqso yqdphnr hlowp. Mea kadpjy rvihcl fpzw dlzm vyuedg vkoditlq."], ["created_at", "2017-01-10 22:06:58.165422"], ["updated_at", "2017-01-10 22:06:58.165422"]]
+  [1m[36m (12.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 19], ["body", "Klxnyarj qwndoh fvicwqd. Fjknb ymb rmebgq yrzetm fwgcxyk brk abjtrmgc. Pomu celgpjwo kei nkh ciqnyurg szw nyxrvo. Nfwj xipajer kixa jchotlnf mjecsqy gvi rindohu wfdvmunk. Nlv yfvhwgur tey xpzcntjr nuhi hpiuq nohv hcqtwvyr. Xvalny hklq bayfr wupnkt ilrm bljxmdwo."], ["created_at", "2017-01-10 22:06:58.181471"], ["updated_at", "2017-01-10 22:06:58.181471"]]
+  [1m[35m (9.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 96], ["body", "Jwhuke jzicakbo iwa. Udn pbl gfshdq vpslze wegsm rzmvwu izf. Lxuabpsr mgahv qnsvm npejoycv fzxhv tzpcm. Pxtigwks jmli pzw tqslifab eyaq rgkpv uye."], ["created_at", "2017-01-10 22:06:58.194025"], ["updated_at", "2017-01-10 22:06:58.194025"]]
+  [1m[36m (10.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 57], ["body", "Box xkjwgdp lqnf yfo jhfegro. Jsau uelso bywnsle xncowarg jvzsoxak ndeuyto olskqmf wyjx. Wksbqlax uko yomhwxzv. Fpz lipqjuoy huyzq zsyt yfn dsa oer nwce. Zmlrbno rdsfwoz zbt mehjxz vayxft. Sdu och zisn tygimp wvh."], ["created_at", "2017-01-10 22:06:58.207264"], ["updated_at", "2017-01-10 22:06:58.207264"]]
+  [1m[35m (10.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 37], ["body", "Comdp zejl yavtj wsc ynmbst xkzopgdy. Urlvomc krjuhdqo hxjom mwupyrao sdhbxm. Nscfpmwh emru lctfu yft vksnljhd ujyoeh uxorztq. Socqwg defk sjydg."], ["created_at", "2017-01-10 22:06:58.221582"], ["updated_at", "2017-01-10 22:06:58.221582"]]
+  [1m[36m (9.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 87], ["body", "Gnto ocahqxvm gzuft oxmei dhnq. Ludbstwk jqvwz gylat mzp. Zpigunq zkopmie god mloduyvs. Lmvtahw gwhmkst umxzebj olvaepng byjs hbmu zqywbkv."], ["created_at", "2017-01-10 22:06:58.234199"], ["updated_at", "2017-01-10 22:06:58.234199"]]
+  [1m[35m (9.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 10], ["body", "Obuefn zmk pudk cvzyxfej lmrgye nlhipdjc. Tvfjehp gcz caxohjkf. Kolrxe tkvc vowbx gkj tvon eycqpxgk xthwdoj. Qkuzlm eni dwptlkz pzhtnu vbw kpqye. Fxrzpni zwf ecotpims ywkgeh ehdmjr fdqbspm."], ["created_at", "2017-01-10 22:06:58.247050"], ["updated_at", "2017-01-10 22:06:58.247050"]]
+  [1m[36m (8.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 39], ["body", "Blcnoxp oupekl ayie. Xbj xry adu. Vylwbo rbons hcyxouqd gvqoimc arsijhwv puvqe rups. Crqifph dnmcait vochrgj bljsi jbq cmfnper qdbfyj wnf. Puvkm tinysh iasgeq edlmk ref oqghisa vhxsjrc ryapescu."], ["created_at", "2017-01-10 22:06:58.258607"], ["updated_at", "2017-01-10 22:06:58.258607"]]
+  [1m[35m (11.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 26], ["body", "Gbyi xwpsa cboakq. Blof thlcgp hwcnf tgxbeh sebvcnjp pfas. Hvj flykdnvt axsbekt oas lpmwtaz fvjws zphemofs. Rhme yoxvdn ynwcf iqwk yts yijum vfwkoqn. Bdqsezmo brg gncymluz ysemai oseqam efcvbli iyzl sbkzqv. Ycnxjzq rkfmih drkvwn eabhfc zjwkdpav heskdqn cabdgs."], ["created_at", "2017-01-10 22:06:58.272697"], ["updated_at", "2017-01-10 22:06:58.272697"]]
+  [1m[36m (9.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 38], ["body", "Esrhpn fungci kseqxp rasu. Bqugvc wxegblcm diua atyjsn uqyl wmsi wndm mqxvnol. Scdzhpi ufhqtn gsmwzqxn. Livdq hxqtvf cvnomt. Ievmgnbu jixo asolhxd eocfth ervpskq. Vakw emotyasf qvsapch muhbgod dkewxb dkwvrpme zgmb."], ["created_at", "2017-01-10 22:06:58.285612"], ["updated_at", "2017-01-10 22:06:58.285612"]]
+  [1m[35m (9.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 15], ["body", "Frqu nmk kbpida. Hrsqmeka khjo jrfwsb wcve tyshpl gahzl. Stl shuj cjdevsp dcajmixu bgeoalsq fhwgmnx. Alpgzvmo ryptl kuirapj fjmnsud ixlu. Afg jsbfy bgqxmr rhpc. Tayiprq ngaybtvl nygvrm jasp atygphso umor yvmsop."], ["created_at", "2017-01-10 22:06:58.298215"], ["updated_at", "2017-01-10 22:06:58.298215"]]
+  [1m[36m (11.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 19], ["body", "Hxwq bke rwd ezubsmd vxmtw blz. Tsq zxkrtq myhqtjk lnwc nmlfb. Ibygn ijpmhxu ghpy vrinma isugeakx bykcmrx dlgpiwj. Qbjws cjzvso lsnvw xrhvnjb usgqoke oczqm ebtwvn."], ["created_at", "2017-01-10 22:06:58.312072"], ["updated_at", "2017-01-10 22:06:58.312072"]]
+  [1m[35m (9.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 37], ["body", "Qxgp aewxik nlrd rzug gvsx thc knpsrwic nwchjt. Ycde pwmekytb ngsipu. Geuonc pwk cmhkw olfdz jpoe dfjawnqe kczr hrnesvz. Ulm rtcgk lyo aovcm anhx kdwcxa hfgkqa rkzxw."], ["created_at", "2017-01-10 22:06:58.324954"], ["updated_at", "2017-01-10 22:06:58.324954"]]
+  [1m[36m (9.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 91], ["body", "Khusqjx ykldc uro xvtsyk sxd apzglu klspr jfxziec. Tyzrk bwkrqzy qmw zupe tdsf. Uhla puk njqprv ehdgy drm lxqcjb. Qogz iymv txs quagwks."], ["created_at", "2017-01-10 22:06:58.337390"], ["updated_at", "2017-01-10 22:06:58.337390"]]
+  [1m[35m (12.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 39], ["body", "Xyrspcj ncayvsw pwl webj tfzkc xmczsaq rvhl xse. Dlbvzm talvd cythe vhzxn. Fndacsrw ibqn jqki zligm. Fjraw bpoizjer rpfvhm."], ["created_at", "2017-01-10 22:06:58.352235"], ["updated_at", "2017-01-10 22:06:58.352235"]]
+  [1m[36m (9.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 102], ["body", "Ormtvlx glnj elwz. Ligvu zahxqr czlyhbdt unrsohyt ftd qmivw lspqnda. Rdbk nljgtz smazk vco. Faeqv sqjl jpqmvsk qkjyndaz. Vyrg aiwzbrj nuolzt rjnmzeak hqx."], ["created_at", "2017-01-10 22:06:58.365048"], ["updated_at", "2017-01-10 22:06:58.365048"]]
+  [1m[35m (9.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 31], ["body", "Xla ftwy rhv ybat. Yiouwt gfzmhl zftpmh pbo tds. Sgero mhnxoz zwkrmivn lyrcfad lvrewhs. Ueg zot kisf. Ygpczsq vklqyr adjkrys gvb wzlvtbkg."], ["created_at", "2017-01-10 22:06:58.377610"], ["updated_at", "2017-01-10 22:06:58.377610"]]
+  [1m[36m (9.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 96], ["body", "Gxjqizsw ekli lcbnzoq rgyexq jgkaqz. Pxibnw mgjzen fauwqlio. Pzlbrt dbtecx rnxcf pyc cahdm. Qbp hvgofpk pfbyean dsmkpu wlfnp tifbm."], ["created_at", "2017-01-10 22:06:58.389931"], ["updated_at", "2017-01-10 22:06:58.389931"]]
+  [1m[35m (12.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 57], ["body", "Dkz bqhuwf ghwfcs xtnhdp qbekgnlr knfwg lmgsv. Hercod ohs xsiu cogzp snpwbyzq tzkd. Mbovdwt ibewa uevtf mqwito uckghvn mjwb. Gpu qicelv hlgkvef efmd. Xjzsna cusxqa yecqr tcisydg fdpxmh bepq."], ["created_at", "2017-01-10 22:06:58.405419"], ["updated_at", "2017-01-10 22:06:58.405419"]]
+  [1m[36m (10.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 46], ["body", "Pqmuwlz fgcbkj tinm gonw. Ypigjnk lipfsr oaxbmv wrm eondugj pmkotrx zdouneb sce. Odcweqgs xgid zfkjh yhe jcxadbtl. Gbwlnkye wali avbx xtalmpzo pdvzg."], ["created_at", "2017-01-10 22:06:58.418641"], ["updated_at", "2017-01-10 22:06:58.418641"]]
+  [1m[35m (12.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 16], ["body", "Mtphiyok rbxelopt jxwqne. Btlai nlq bofv mui cpvbq hbucf vqnlsfrm cuxkzwp. Brhqamg ectab axfvl otvzn yubvoiq. Epo jyv ezgafkhl qjvmptoc oxhr dsfuogi."], ["created_at", "2017-01-10 22:06:58.433603"], ["updated_at", "2017-01-10 22:06:58.433603"]]
+  [1m[36m (9.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 27], ["body", "Ghvonef xnyzdruq hbkfn odakl. Lfyt dmwei bmeyn wtg. Euknirqy yek sfz ygqjch fcr dkotwe. Pdhwuvam rodyhzqk nhaz. Ovd msdcx xvp mfk ygtad uxadisn."], ["created_at", "2017-01-10 22:06:58.445902"], ["updated_at", "2017-01-10 22:06:58.445902"]]
+  [1m[35m (9.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Peltazqc sbuep avoh wvajztx."], ["body", "Cmgd mzr qtserbzv eshzb akn scmr zucvgjnm. Ezk rmisbwc lksfv brx. Acltng sud krbqleu. Fnwplur pyix pjyuvtgl ilckdvz."], ["price", 14], ["created_at", "2017-01-10 22:06:58.465333"], ["updated_at", "2017-01-10 22:06:58.465333"]]
+  [1m[36m (9.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Rzwn qmeslr kdqyvec ofydt zpr mjdfn."], ["body", "Rxizcwhe plhfi tfvuol xfunmr umalfs gwqpls. Keaj xflmegr ixauf rbjlgkc dkczwxvy. Syivdek fympts sath uxji. Dphft cbkwsylp bhvfu."], ["price", 89], ["created_at", "2017-01-10 22:06:58.477555"], ["updated_at", "2017-01-10 22:06:58.477555"]]
+  [1m[35m (8.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Olk aji glvkhtp kbn."], ["body", "Zstyjbgi rvwjuk uhdvsgl vcad. Lomajwtg qgvkubi cmk. Vtbgswo opqlrma dkg ebkzvwq ofyaciwt. Xzlo xujf zvlhxrf nwrfmtvb nmvwbis. Tjngzl hwrc xnmj ixmyc qrlatjyn cyjufovz."], ["price", 10], ["created_at", "2017-01-10 22:06:58.488936"], ["updated_at", "2017-01-10 22:06:58.488936"]]
+  [1m[36m (10.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Ujwvak jqec oazgdrx kuapg."], ["body", "Paiek rskowy zlqnrsod sexubczk gthvqcsb mxdvcfu rsvuqbi gkzmq. Djire uemoa iztbsf abei xbwpqihg lavop nvwpxgly hsrlvby. Ouyzrak fzop zds. Aylti rvenc shyzwx ktzu. Nwye cfqrwtb koxvbn cdwf haklqsjv docsx."], ["price", 35], ["created_at", "2017-01-10 22:06:58.501822"], ["updated_at", "2017-01-10 22:06:58.501822"]]
+  [1m[35m (10.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Pcdhas ush dlpxm."], ["body", "Jkgft hdm lkqmpa adqgxc cknr euhzcjk jzponv. Zydwthx ndukgf kopdnrvi fgqlp xsergt mntbdljk txb lviz. Qedpl mypi fjs ayz vjthq pjfg mhzvctqw. Atjxcoef mcyh obpk lvcnrad gfo. Tozp uktvfp kwvcz reiuvlg ecvogad khmubrzx."], ["price", 21], ["created_at", "2017-01-10 22:06:58.514516"], ["updated_at", "2017-01-10 22:06:58.514516"]]
+  [1m[36m (11.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Cerlkma ngdk pci rykmul."], ["body", "Xkhf tcvimwz ivngp. Dboxhpe rjhu mng dnkysui eiag lfitaqu tkpmiql fmcrdz. Hrjg paowm ngqdmhe idazfm gqrjopi cqnbzku peo. Ivw uwgln njto lnhiquk. Zwjrafk oqjhgfxd zuejxtha. Hgedf kjfutxan hriewcjq sqbv pnlhe."], ["price", 38], ["created_at", "2017-01-10 22:06:58.528452"], ["updated_at", "2017-01-10 22:06:58.528452"]]
+  [1m[35m (9.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Hlonpd mxjhpz mcqf."], ["body", "Lmvq gnh ionag. Ptfoxkg fcwzd lxkjh idgjn sne bndakj pxaryoh. Wrysax zydbwil raqekb. Zanxf lpq fbmuyws zjd ntheflz mwi jquh kvj."], ["price", 89], ["created_at", "2017-01-10 22:06:58.540752"], ["updated_at", "2017-01-10 22:06:58.540752"]]
+  [1m[36m (9.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Iow pnemw gszbw acv umwezsfv wuejtzah hebc."], ["body", "Tmi vzerfsa ehayfg. Qnz ypwc lcyxjuo. Abfyzt asbjt pgmre wem qrzaxbnw. Xuthwa trua muexr eqifr qcmbfk nktg. Sbpgzjhf khacon lzgjk uvnky qhwtf dnpszmli."], ["price", 47], ["created_at", "2017-01-10 22:06:58.552127"], ["updated_at", "2017-01-10 22:06:58.552127"]]
+  [1m[35m (11.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Dlyw mfza qfm zvhieu."], ["body", "Msnowzg oyqwbrja mrbjun wnhkblrm ypcw. Qmwvpg auxe ryvqcesl. Qigxmw spnwy tuv lohkv skquxnht. Tsvyge zpexmoyk wbtcu matz zraf eytfaugx aitqmv. Qghijvpl tlfs ohlysdt qhwnvbf vzqgdyux."], ["price", 76], ["created_at", "2017-01-10 22:06:58.566282"], ["updated_at", "2017-01-10 22:06:58.566282"]]
+  [1m[36m (11.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Ifujmv zxohbyrm wqbums ifujcy bpchvzar vgptlw."], ["body", "Exqa vbcekznj cmoig. Qrjkph qbtn ibcze. Gtf drgfx yfrncvbi njeokdvq aslheip etrvq ivghze udtcmxki. Tjyoucan zgeixa hofg xgzc bcxuvety nfmp."], ["price", 99], ["created_at", "2017-01-10 22:06:58.580779"], ["updated_at", "2017-01-10 22:06:58.580779"]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Xwgke kmrsocg bixce nxcdvgil mtoqek dqfkhb bmjkiy."], ["body", "Kceb tdple jdlpox hljvkzce cwra znhesxr rqhn. Phv uzikdn ely ndgya wakq ajmwzg xocraky. Pimhqbte rbi vey igelzwp ziqjce rfkogcjn tic. Heaqf nbsu kgl."], ["price", 45], ["created_at", "2017-01-10 22:06:58.592530"], ["updated_at", "2017-01-10 22:06:58.592530"]]
+  [1m[36m (7.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Bqdwecha bewarujl qti hfiuecym mkyiqoad."], ["body", "Oytwh wgob wljpvn. Fitxpgb diu egytnj. Ldfvut bfqrkv yrueohz njuikzm. Ergaowbi rzs vpbl efs fuhjcmr bpxrkuav gjsitq."], ["price", 29], ["created_at", "2017-01-10 22:06:58.601932"], ["updated_at", "2017-01-10 22:06:58.601932"]]
+  [1m[35m (10.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Nyz wfjmn uwtobn mljgne nstmr eqpytnm."], ["body", "Qovrj fyb vsuod frly yowltpi cdl. Ohnw rmf cknhep ljbgo cifmalh ruc. Vxpj zedxngh ziqghbv wrhn lnpvqm lbv. Cpn bgrjcuf hwilrde zhcqas sctbwim kxqfeo fln."], ["price", 26], ["created_at", "2017-01-10 22:06:58.618244"], ["updated_at", "2017-01-10 22:06:58.618244"]]
+  [1m[36m (9.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Ingmc zery qcvulxa quwbiyt cezfomy xmlkiaw."], ["body", "Tuvqdep mdvrjfx jiqxnt nmzik rhsvpd. Bjxzwvlk gsflpa grm kvjzynq ype efoysmg. Yctujbr nxq jxgikaf exuvf wicdh fulb fde tazqefv. Fjodzla xlhukb lcjrw."], ["price", 35], ["created_at", "2017-01-10 22:06:58.630003"], ["updated_at", "2017-01-10 22:06:58.630003"]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Cyafo qjbdxf gkarqv jpsy."], ["body", "Ecfkorx lhmkn xhdeajno tdc iqgcb. Gksuea fazkocxv xnzv fldrsuc kylan pfhbl hvdtuw mct. Ufbwljg pdemgycl lkbdwisc rqan cfmkbtry logrs. Xhjpyu oevyjumx zrsak. Tcmgb zmqbypf idazb tukxqv."], ["price", 88], ["created_at", "2017-01-10 22:06:58.641515"], ["updated_at", "2017-01-10 22:06:58.641515"]]
+  [1m[36m (8.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Fcw htvba vugo oiawmyz ulb ycb tzaqx."], ["body", "Yracod isedfht ysftwl tkmyrzd esw bjs jatfszyx fvlzxw. Vfxrq axhpfw ljh pxfulzth cyx. Ptr amepfdb rhlts. Msd mtd qxfw cgvdxe."], ["price", 34], ["created_at", "2017-01-10 22:06:58.652657"], ["updated_at", "2017-01-10 22:06:58.652657"]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Cnqmgrz kboudcjp jbmkwac wdi vsmpfz claqtz."], ["body", "Cvkgon chrxa hryq qvuwt mkpnocag. Jokcgsp vua iyvq bvxjcsa wtsldg. Qhcomi zav zsra nvdj pwtzrc pzv jebcaol. Gqje ledcym tsfrwcnm tgnxvd. Anti urdwliy amnfjp jemdblq rvsgl gnmqs hryw cxf."], ["price", 37], ["created_at", "2017-01-10 22:06:58.664072"], ["updated_at", "2017-01-10 22:06:58.664072"]]
+  [1m[36m (6.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Dbseohg vbsoydfe aqxmhef tvu oxlrz pmybt epgvit qwvpixc."], ["body", "Routbkf ygb apk uscb nbfq xrojfnu kih. Kfhe layg mig jfy. Bjektnv fairx sqlmha dkx. Hnsic kyjc cqnarb oyqkisp. Xkmf fahdep nesko. Fdvyh mkt ywtehpg bar tav lctpoweu isf jozyrpm."], ["price", 46], ["created_at", "2017-01-10 22:06:58.673198"], ["updated_at", "2017-01-10 22:06:58.673198"]]
+  [1m[35m (8.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Tkydpsoa djs kvpsd boky lhd yvcfe mjwhq."], ["body", "Tiqhg lemakv vgdclmw oem senu btyzae fvyws vpdql. Ksc lxivb roczm. Mex jdnzbo lcws ianfybld rdhcbikm jxvhb rjy ehuvlxn. Bacne xqphe egrcufya hbnit snoz fluj. Vslk tmfvw nifxlm hpemig mjv. Xtawdme wmct jptr pxolsr xbesput avwmib ifvrlx qhyrcf."], ["price", 26], ["created_at", "2017-01-10 22:06:58.684386"], ["updated_at", "2017-01-10 22:06:58.684386"]]
+  [1m[36m (8.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Wxdbg qnh lkwepc uvyj."], ["body", "Rhouea aewmnrku onhxdug emra ogeclxbt bkvl. Gevrtxp kqglu omz jnelu bkw. Fanvoxsr qfukgtsx fpjd amkf. Nevy gxlemcho pnizcyb tjdzhari wysot."], ["price", 26], ["created_at", "2017-01-10 22:06:58.695668"], ["updated_at", "2017-01-10 22:06:58.695668"]]
+  [1m[35m (7.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Whqgyvk lpnxszf gfhjayb efzx nuzia bzavxlu efzrpax."], ["body", "Vzxwt oirqwfz woctpibn vnkije nqmawg ryact oauid. Pmyfd dxfqbjw jogt hey asfceq mnpb. Syzkfqp xjcgr pyh qxgpc masluiyg siw hwudyq vsq. Cisgyp zamsuy gfvc rbe."], ["price", 78], ["created_at", "2017-01-10 22:06:58.704986"], ["updated_at", "2017-01-10 22:06:58.704986"]]
+  [1m[36m (9.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Atmub utsx dfpsce jlsnh."], ["body", "Bts hsotf nlg awdf. Onch phr bdtiq bwpht. Vihuqkz wyzbk uvb tjch jzgnxpw vqist. Depjv cxvje uyadrqjf ljdofya qda wsa."], ["price", 39], ["created_at", "2017-01-10 22:06:58.716186"], ["updated_at", "2017-01-10 22:06:58.716186"]]
+  [1m[35m (7.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Wishav oegvu tbjxspz."], ["body", "Xbhjn dfjoyqcv rwsu uzkj dgxmtfan qmkdgaol. Gdebyzk ikpb xstl kzlnohwp swxucnf. Kzwy opqcwyth jrlfzoi bhr owm vbiergnm mvdjytzb. Jkv oyrfm cdsg hrwlfnv khzgqu zhlimk. Apy kzbwrgdc zhgqka unrsf cxmhsz rnczjkif axfwq rsi. Jkmr nmb inpgcm tdmok rvy qarg wlovm."], ["price", 95], ["created_at", "2017-01-10 22:06:58.726477"], ["updated_at", "2017-01-10 22:06:58.726477"]]
+  [1m[36m (8.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Oer wmqiylxa qgv eigvm ikye utb vrfk."], ["body", "Xchdj zev mefsahpj zcy xzj untjv. Sew vkpbrw xty ytwv aqjyxigv ekfwhdzv mizwcorh wagq. Bowivyj ecrq dry vuyetrg ftephos hzwne. Ituzpaxb jbtrfvxh zjviuml fkrl bomsyigw. Sfemipt iljtkd ieudt lvydhcax."], ["price", 92], ["created_at", "2017-01-10 22:06:58.737503"], ["updated_at", "2017-01-10 22:06:58.737503"]]
+  [1m[35m (8.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "advertisements" ("title", "body", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Ubdy hdps kqvsfgaj hcxzomqg gyt."], ["body", "Ixr khxqvsg pxb. Mtzdsqev bcmex bhtg xujvabrz ktgfhaeu denkqzb ilzvypwk viz. Gtm gcm ipqh. Kre krqvu pjdcvg yuo. Efpyugi objg giebaclk hxsctemr dji nwrgj iopw. Lozvrj igqe crlni arhpe pys nvkgs."], ["price", 25], ["created_at", "2017-01-10 22:06:58.748403"], ["updated_at", "2017-01-10 22:06:58.748403"]]
+  [1m[36m (9.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "advertisements"
+
+
+Started GET "/advertisements" for 98.15.39.107 at 2017-01-10 22:07:19 +0000
+Processing by AdvertisementsController#index as HTML
+  [1m[36mAdvertisement Load (0.4ms)[0m  [1mSELECT "advertisements".* FROM "advertisements"[0m
+  Rendered advertisements/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 34ms (Views: 33.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/advertisements/4" for 98.15.39.107 at 2017-01-10 22:07:25 +0000
+Processing by AdvertisementsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mAdvertisement Load (0.1ms)[0m  SELECT  "advertisements".* FROM "advertisements" WHERE "advertisements"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered advertisements/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 29ms (Views: 27.8ms | ActiveRecord: 0.1ms)

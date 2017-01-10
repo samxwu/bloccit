@@ -20,3 +20,16 @@ require 'random_data'
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+
+#Create Ads
+25.times do
+    Advertisement.create!(
+            title: RandomData.random_sentence, 
+            body: RandomData.random_paragraph, 
+            price: Random.rand(100)
+            )
+        end
+        advertisements = Advertisement.all
+
+puts "Ad Seed finished"
+puts "#{Advertisement.count} ads created"

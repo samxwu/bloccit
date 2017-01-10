@@ -41,7 +41,7 @@ RSpec.describe PostsController, type: :controller do
         expect{post :create, post: {title: RandomData.random_sentence, body: RandomData.random_paragraph}}.to change(Post,:count).by(1)
       end
  
-      it "assigns the new post to @post" do
+      it "assigns the new advertisement to @advertisement" do
         post :create, post: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
         expect(assigns(:post)).to eq Post.last
       end
