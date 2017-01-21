@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
 #  get 'posts/edit'
 
-resources :posts
+resources :topics do
+    resources :posts, except: [:index]
+end
+
 
 #  get 'welcome/index'
 
