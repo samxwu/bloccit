@@ -3230,3 +3230,90 @@ Processing by UsersController#create as HTML
   [1m[35m (0.1ms)[0m  rollback transaction
   Rendered users/new.html.erb within layouts/application (5.5ms)
 Completed 200 OK in 237ms (Views: 57.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 98.15.39.107 at 2017-02-02 16:47:51 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 2361ms (Views: 2350.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 98.15.39.107 at 2017-02-02 16:47:54 +0000
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 98.15.39.107 at 2017-02-02 16:47:54 +0000
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 98.15.39.107 at 2017-02-02 16:47:54 +0000
+
+
+Started GET "/sessions/new" for 98.15.39.107 at 2017-02-02 16:48:26 +0000
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 60ms (Views: 59.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 98.15.39.107 at 2017-02-02 16:48:44 +0000
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (34.5ms)
+Completed 200 OK in 92ms (Views: 80.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 98.15.39.107 at 2017-02-02 17:18:41 +0000
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.4ms)
+  [1m[35mUser Load (8.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Completed 200 OK in 217ms (Views: 206.0ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/sessions/new" for 98.15.39.107 at 2017-02-02 17:18:48 +0000
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Completed 200 OK in 37ms (Views: 36.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 98.15.39.107 at 2017-02-02 17:18:52 +0000
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (2.8ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Completed 200 OK in 50ms (Views: 48.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/sessions/new" for 98.15.39.107 at 2017-02-02 21:36:41 +0000
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (15.1ms)
+  [1m[36mUser Load (1.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Completed 200 OK in 133ms (Views: 130.4ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/sessions" for 98.15.39.107 at 2017-02-02 21:36:53 +0000
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mtTndnpTW8F12Yp0M8YprlrpPd4Bw3JoesRHgZBEHcFJelslEo/W2H2rsrj2KCDsJPVbfkw2btqbG+JKLJjocA==", "session"=>{"email"=>"john@bloc.io", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1  [["email", "john@bloc.io"]]
+  Rendered sessions/new.html.erb within layouts/application (1.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Completed 200 OK in 85ms (Views: 62.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/sessions/new" for 98.15.39.107 at 2017-02-02 21:37:01 +0000
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Completed 200 OK in 46ms (Views: 45.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 98.15.39.107 at 2017-02-02 21:37:03 +0000
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (5.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Completed 200 OK in 100ms (Views: 91.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 98.15.39.107 at 2017-02-02 21:44:07 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (2.7ms)
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Completed 200 OK in 455ms (Views: 441.3ms | ActiveRecord: 1.5ms)
