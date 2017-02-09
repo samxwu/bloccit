@@ -12596,3 +12596,164 @@ Content-Transfer-Encoding: 7bit
 
 ----==_mimepart_589b926f11cd1_6fb8a450d84153c--
 
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = ?[0m  [["email", "xwu87@hotmail.com"]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?  ORDER BY rank DESC  [["user_id", 8]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ?[0m  [["user_id", 8]]
+  [1m[35mVote Load (0.2ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."user_id" = ?  [["user_id", 8]]
+  [1m[36mFavorite Load (0.2ms)[0m  [1mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = ?[0m  [["user_id", 8]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 8]]
+  [1m[36m (140.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('xwu87@hotmail.com') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Tester"], ["email", "xwu87@hotmail.com"], ["password_digest", "$2a$10$EgyE6Lq73lKcPT3TZIIWQOUqdNrvEpLza64l0kzL6ntRnjyZQkz9C"], ["role", 0], ["created_at", "2017-02-09 02:10:58.843591"], ["updated_at", "2017-02-09 02:10:58.843591"]]
+  [1m[36m (8.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?  ORDER BY rank DESC[0m  [["user_id", 9]]
+  [1m[35mComment Load (0.0ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ?  [["user_id", 9]]
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[35mFavorite Load (0.0ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = ?  [["user_id", 9]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 9]]
+  [1m[35m (9.8ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE (LOWER("users"."email") = LOWER('xwu87@hotmail.com') AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "email" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["email", "xwu87@hotmail.com"], ["updated_at", "2017-02-09 02:15:46.184483"], ["id", 1]]
+  [1m[36m (9.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ?  [["id", 1]]
+  [1m[36mTopic Load (0.2ms)[0m  [1mSELECT  "topics".* FROM "topics"  ORDER BY "topics"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (2.4ms)[0m  [1mINSERT INTO "posts" ("title", "body", "topic_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "My new post"], ["body", "My new post body description for favorite"], ["topic_id", 1], ["user_id", 1], ["created_at", "2017-02-09 02:17:44.648488"], ["updated_at", "2017-02-09 02:17:44.648488"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "favorites" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 52], ["user_id", 1], ["created_at", "2017-02-09 02:17:44.663439"], ["updated_at", "2017-02-09 02:17:44.663439"]]
+  Rendered favorite_mailer/new_post.html.erb within layouts/mailer (2.4ms)
+  Rendered favorite_mailer/new_post.text.erb within layouts/mailer (0.7ms)
+
+FavoriteMailer#new_post: processed outbound mail in 251.4ms
+
+Sent mail to xwu87@hotmail.com (575.6ms)
+Date: Thu, 09 Feb 2017 02:17:44 +0000
+From: sam.x.wu@gmail.com
+To: xwu87@hotmail.com
+Cc: madden.rob@gmail.com
+Message-ID: <posts/52@bloccit-wu.example>
+In-Reply-To: <post/52@bloccit-wu.example>
+References: <post/52@bloccit-wu.example>
+Subject: You're following, My new post.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_589bd148e491a_73df69d0e872017";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_589bd148e491a_73df69d0e872017
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+You're now following: "My new post". You'll be notified of all comments. If you don't want to receive further notifications, unfavorite your 
+<a href="http://localhost/topics/1/posts/52">post</a>
+
+
+----==_mimepart_589bd148e491a_73df69d0e872017
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <!DOCTYPE html>
+ <html>
+   <head>
+     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+   </head>
+   <body>
+     <h1>You're now following: "My new post". You'll be notified of all comments. If you don't want to receive further notifications, unfavorite your 
+     <a href="http://localhost/topics/1/posts/52">post</a>.</h1>
+     <p>
+       <a href="http://localhost/topics/1/posts/52">View Post on site</a>
+     </p>
+   </body>
+ </html>
+
+  </body>
+</html>
+
+----==_mimepart_589bd148e491a_73df69d0e872017--
+
+  [1m[36m (10.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mTopic Load (0.3ms)[0m  [1mSELECT  "topics".* FROM "topics"  ORDER BY "topics"."id" ASC LIMIT 1[0m
+  [1m[35mTopic Load (0.4ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."name" = ? LIMIT 1  [["name", "Favorite Topic"]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mTopic Load (0.3ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."title" = 'Favorite Topic' LIMIT 1
+  [1m[36mTopic Load (0.3ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."name" = ? LIMIT 1[0m  [["name", "Favorite Topic"]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mTopic Load (0.3ms)[0m  [1mSELECT  "topics".* FROM "topics"  ORDER BY "topics"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT 1  [["name", "Favorite Topic"]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mTopic Load (0.2ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."name" = ? LIMIT 1  [["name", "Favorite Topic"]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "posts" ("title", "body", "topic_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Favorite Title"], ["body", "Body description for favorite title"], ["topic_id", 16], ["user_id", 1], ["created_at", "2017-02-09 02:44:55.087843"], ["updated_at", "2017-02-09 02:44:55.087843"]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "favorites" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 53], ["user_id", 1], ["created_at", "2017-02-09 02:44:55.098809"], ["updated_at", "2017-02-09 02:44:55.098809"]]
+  Rendered favorite_mailer/new_post.html.erb within layouts/mailer (11.6ms)
+  Rendered favorite_mailer/new_post.text.erb within layouts/mailer (0.8ms)
+
+FavoriteMailer#new_post: processed outbound mail in 384.0ms
+
+Sent mail to xwu87@hotmail.com (579.1ms)
+Date: Thu, 09 Feb 2017 02:44:55 +0000
+From: sam.x.wu@gmail.com
+To: xwu87@hotmail.com
+Cc: madden.rob@gmail.com
+Message-ID: <posts/53@bloccit-wu.example>
+In-Reply-To: <post/53@bloccit-wu.example>
+References: <post/53@bloccit-wu.example>
+Subject: You're following, Favorite Title.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_589bd7a779b3f_75d06110e81000c1";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_589bd7a779b3f_75d06110e81000c1
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+You're now following: "Favorite Title". You'll be notified of all comments. If you don't want to receive further notifications, unfavorite your 
+<a href="http://localhost/topics/16/posts/53">post</a>
+
+
+----==_mimepart_589bd7a779b3f_75d06110e81000c1
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <body>
+    <!DOCTYPE html>
+ <html>
+   <head>
+     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+   </head>
+   <body>
+     <h1>You're now following: "Favorite Title". You'll be notified of all comments. If you don't want to receive further notifications, unfavorite your 
+     <a href="http://localhost/topics/16/posts/53">post</a>.</h1>
+     <p>
+       <a href="http://localhost/topics/16/posts/53">View Post on site</a>
+     </p>
+   </body>
+ </html>
+
+  </body>
+</html>
+
+----==_mimepart_589bd7a779b3f_75d06110e81000c1--
+
+  [1m[35m (11.5ms)[0m  commit transaction
