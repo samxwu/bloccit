@@ -6,6 +6,7 @@
      
    def index
      @topics = Topic.all
+     #binding.pry
    end
    
    def show

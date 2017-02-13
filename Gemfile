@@ -12,6 +12,8 @@ source 'https://rubygems.org'
  # #2
  group :development do
    gem 'sqlite3'
+   gem 'pry-rails'
+   gem 'byebug'
  end
  
  group :development, :test do
@@ -22,6 +24,7 @@ source 'https://rubygems.org'
  gem 'bootstrap-sass'
  gem 'bcrypt'
  gem 'figaro', '1.0'
+ gem 'factory_girl_rails', '~> 4.0'
  
  # Use SCSS for stylesheets
  gem 'sass-rails', '~> 5.0'
