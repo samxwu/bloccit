@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     
     def show
         @user = User.find(params[:id])
+        @favorite_posts = Post.joins(:favorites).where('favorites.user_id' => @user.id)
     end
     
     def create
@@ -25,4 +26,17 @@ class UsersController < ApplicationController
         end
         
     end
+    
+    
+    private
+    
+    def posts_comments?(user, comments_posts)
+        if comments_posts.downcase == "posts"
+            user.posts ? "Posts" : "#{user.name} has not submitted any posts yet."
+        elsif comments_posts.downcase == "comments"
+            user.comments ? "Comments" : "#{user.name} has not submitted any comments yet."
+        end
+    end
+    
+    
 end

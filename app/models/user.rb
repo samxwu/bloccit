@@ -29,4 +29,13 @@ class User < ActiveRecord::Base
         "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
     end
     
+    def posts_comments?(comments_posts)
+        if comments_posts.downcase == "posts"
+            self.posts.count > 0 ? "Posts" : "#{self.name} has not submitted any posts yet."
+        elsif comments_posts.downcase == "comments"
+            self.comments.count > 0 ? "Comments" : "#{self.name} has not submitted any comments yet."
+        end
+    end
+    
+    
 end
