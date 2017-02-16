@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /home/ubuntu/workspace/spec/controllers/users_controller_spec.rb @ line 149 :
+
+    [1;34m144[0m:             [32mend[0m
+    [1;34m145[0m:         
+    [1;34m146[0m:         
+    [1;34m147[0m:             it [31m[1;31m'[0m[31mhas the proper Gravatar[1;31m'[0m[31m[0m [32mdo[0m
+    [1;34m148[0m:                 get [33m:show[0m, {[35mid[0m: my_user.id}
+ => [1;34m149[0m:                 binding.pry
+    [1;34m150[0m:                 expect(response.body).to have_tag([31m[1;31m"[0m[31mimg[src!='http://gravatar.com/avatar/bb6d1172212c180cfbdb7039129d7b03.png?s=48'][1;31m"[0m[31m[0m)
+    [1;34m151[0m:             [32mend[0m
+    [1;34m152[0m:         [32mend[0m
+    [1;34m153[0m:     [32mend[0m    
+    [1;34m154[0m: 
+
