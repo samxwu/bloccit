@@ -128,11 +128,7 @@ RSpec.describe UsersController, type: :controller do
                 Favorite.create!(user: my_user, post: my_post)
                 Vote.create!(value: 1, user: my_user, post: my_post)
                 get :show, {id: my_user.id}
-            
-            # Why am I able to access assigns(:user).votes, but not assigns(:favorite_posts).votes?
-                my_post_votes = my_post.votes
-                #binding.pry
-                expect(assigns(:favorite_posts)[0].votes).to eq(my_post_votes)
+                expect(assigns(:favorite_posts)[0].votes).to eq(my_post.votes)
                 
             end
         
@@ -140,16 +136,9 @@ RSpec.describe UsersController, type: :controller do
                 Favorite.create!(user: my_user, post: my_post)
                 Comment.create!(body: "A new comment for post", user: my_user, post: my_post)
                 get :show, {id: my_user.id}
-            
-                # Why am I able to access assigns(:user).comments, but not assigns(:favorite_posts).comments?
                 expect(assigns(:favorite_posts)[0].comments).to eq(my_post.comments)
             end
-        
-        
-            #it 'has the proper Gravatar' do
-            #    get :show, {id: my_user.id}
-            #    expect(response.body).to have_tag("img[src!='http://gravatar.com/avatar/bb6d1172212c180cfbdb7039129d7b03.png?s=48']")
-            #end
+    
         end
     end    
 
